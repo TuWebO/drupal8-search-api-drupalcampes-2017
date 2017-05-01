@@ -1,0 +1,527 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Drupal 8: Search API Solr</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="sponsor">
+			<img src="assets/images/drupalcamp2017-logo.svg"/><span>Drupal 8: Search API Solr <strong>@TuWebO</strong></span>
+		</div>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- Cover -->
+				<section data-background-transition="slide" data-background="assets/images/drupalcamp-bg.jpg" class="left">
+					<div class="left">
+						<img src="assets/images/drupalcamp2017-logo.svg"/>
+					</div>
+					<div class="drupalcamp-label-blue left">
+						<h1>Search API Solr en Drupal 8</h1>
+						<em>Bases prácticas para encontrar lo buscado</em>
+					</div>
+
+					<div class="drupalcamp-label-pink left xsmall">
+						Agustín Gómez /
+						<span class="small">@TuWebO</span>
+					</div>
+
+					<div class="drupalcamp-label-blue left xsmall inline-block" style="float:right">
+						#drupalcamp2017
+					</div>
+
+				</section>
+
+				<!-- Personal presentation -->
+				<section>
+					<div><img src="assets/intro/agus-foto.jpg" class="profile-photo"></div>
+					<h4>Agustín Gómez</h4>
+					<div class="xsmall"><em>Desarrollador y Site-builder</em></div>
+					<div class="small"><a href="https://twitter.com/jltutor" target="_blank">@TuWebO</a></div>
+					<p class="xsmall"><a href="https://drupal.org/u/gedur" target="_blank">drupal.org/u/TuWebO</a></p>
+					<img src="assets/images/metadrop-logo.svg" class="metadrop-logo">
+				</section>
+
+				<!-- @section INTRODUCCIÓN-->
+				<section class="metadrop.chapter-start intro" data-breadcrumb="Introducción">
+					<h1>Search API Solr en Drupal 8</h1>
+					<div><img src="assets/logo.svg" width="420"/></div>
+					<p class="small"><i>"Bases prácticas para encontrar lo buscado"</i></p>
+					<br>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section -->
+				<section class="intro.metadrop">
+					<p>Agustín Gómez</p>
+					<img src="assets/intro/agus-foto.jpg" alt="TuWebO's picture" title="TuWebO's picture">
+					<table class="small">
+						<tbody>
+						<tr>
+							<td>Drupal</td>
+							<td>
+								<a href="http://www.drupal.org/u/TuWebO">drupal.org/u/TuWebO</a>
+								<p class="small">Desarrollador y Site-Builder</p>
+							</td>
+						</tr>
+						<tr>
+							<td>IRC</td>
+							<td><a href="irc://irc.freenode.net:6667/drupal-es">TuWebO</a><p class="small">#drupal-es<br>#drupal-search-api</p></td>
+						</tr>
+						<tr>
+							<td>Twitter</td>
+							<td><a href="https://twitter.com/TuWebO">twitter.com/TuWebO</a></td>
+						</tr>
+						<tr>
+							<td>Metadrop</td>
+							<td><a href="http://www.metadrop.net">www.metadrop.net</a></td>
+						</tr>
+						</tbody>
+					</table>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section -->
+				<section class="intro.objetives" data-breadcrumb="Introducción > Objetivos">
+					<h3>Objetivos</h3>
+					<dl>
+						<dd>
+							Conocer algunos detalles de las páginas de búsqueda
+						</dd>
+						<dd>
+							Configurar Drupal 8 y Search API Solr para ofrecer resultados relevantes y precisos
+						</dd>
+					</dl>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section HISTORIA-->
+				<section class="metadrop chapter-start history">
+					<h2>Historia - Search API Solr</h2>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section BATTLE PLAN -->
+				<section class="history.battleplan" data-breadcrumb="Historia > Battleplan">
+					<h2>Battleplan</h2>
+					<p class="fonts5"><a href="https://dev.acquia.com/blog/search-strategies-in-drupal-8/battleplan-for-search--solr-in-drupal-8/09/05/2016/10421">Battleplan for Search & Solr in Drupal 8</a></p>
+					<table>
+						<tbody>
+						<tr>
+							<td>
+								<p><img src="assets/history/drunkenmonkey-picture.jpg" alt="drunken monkey's picture" title="drunken monkey's picture"></p>
+								<p class="small">Thomas Seidl<br><a href="https://www.drupal.org/u/drunken-monkey">@drunken monkey</a></p>
+							</td>
+							<td>
+								<p><img src="assets/history/nickveenhoj-picture.jpg" alt="Nick_vh's picture" title="Nick_vh's picture"></p>
+								<p class="small">Nick Veenhof<br><a href="https://www.drupal.org/u/nick_vh">@nick_vh</a></p>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					<em>"Contrib Search maintainers are committed to make Drupal 8 kick ass with Search API."</em>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section GIT LOG -->
+				<section class="history.benefits" data-breadcrumb="Historia > Beneficios">
+					<h2>git log</h2>
+					<pre><code data-trim data-noescape class="small">git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ad)%C(reset) %C(bold white)%s%C(reset) %C(red)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+					</code></pre>
+					<img src="assets/history/git-log.png"  width="100%"/>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section DONDE ESTAMOS -->
+				<section class="history.where-are-we" data-breadcrumb="Historia > Dónde estamos">
+					<h2>Dónde estamos</h2>
+					<p><a href="https://drunkenmonkey.at/blog/search_api_d8_release">Search API in Drupal 8 is about to be stable!</a></p>
+					<p class="fonts5">https://drunkenmonkey.at/blog/search_api_d8_release</p>
+					<img src="assets/history/drunken-monkey-d8-rc.png"  width="100%"/>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section DONDE ESTAMOS -->
+				<section class="history.contribute" data-breadcrumb="Historia > Contribuir">
+					<h2>¡Contribuye!</h2>
+					<p>Empieza por la Documentación</p>
+					<table class="small">
+						<tbody>
+						<tr>
+							<td style="vertical-align: top"><a href="https://www.drupal.org/docs/7/modules/search-api">
+								https://www.drupal.org/docs/7/modules/search-api
+							</a><img src="assets/history/drupal7-search-api-documentation.png"  width="100%"/></td>
+							<td style="vertical-align: top"><a href="https://www.drupal.org/docs/8/modules/search-api">
+								https://www.drupal.org/docs/8/modules/search-api
+							</a><img src="assets/history/drupal8-search-api-documentation.png"  width="100%"/>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section LA BUSQUEDA -->
+				<section class="metadrop chapter-start search">
+					<h2>La búsqueda</h2>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section EQUILIBRIO -->
+				<section class="search.balance" data-breadcrumb="La búsqueda > Equilibrio">
+					<h3>Devolver todos los documentos relevantes y nada más</h3>
+					<p><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section EQUILIBRIO -->
+				<section class="search.precision-example" data-breadcrumb="La búsqueda > Ejemplo de precision y recall">
+					<h5>"Precision & recall" en la búsqueda</h5>
+					<p class="small">Busca la letra "N"  ¿En qué filas sale y cuátas veces?</p>
+					<div style="font-size: 1.3em;">
+						<p style="font-size: 1em">A</p>
+						<p style="font-size: 0.9em">A E</p>
+						<p style="font-size: 0.8em">C K N</p>
+						<p style="font-size: 0.7em">A R F O</p>
+						<p style="font-size: 0.6em">V P G X D</p>
+						<p style="font-size: 0.5em">R E A F K O</p>
+						<p style="font-size: 0.4em">N V K V O A Z</p>
+						<p style="font-size: 0.3em">N P H T A N X U</p>
+						<p style="font-size: 0.2em">X D F H P T Z A N</p>
+						<p style="font-size: 0.1em">F A X T D N H U P Z</p>
+					</div>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section MEDIUM EXAMPLE -->
+				<section class="search.precision-recall-know-more" data-breadcrumb="La búsqueda > Precision & recall > Saber más">
+					<h3><em>Y si quieres saber más...</em></h3>
+					<dl>
+						<dt>Precission and recall</dt>
+						<dd class="small"><a href="https://en.wikipedia.org/wiki/Precision_and_recall">https://en.wikipedia.org/wiki/Precision_and_recall</a></dd>
+						<dt>Apache Solr Documentation - Relevance</dt>
+						<dd class="small"><a href="https://cwiki.apache.org/confluence/display/solr/Relevance">https://cwiki.apache.org/confluence/display/solr/Relevance</a></dd>
+						<dt>Debugging Search Application Relevance Issues</dt>
+						<dd class="small"><a href="https://lucidworks.com/2009/09/02/debugging-search-application-relevance-issues">https://lucidworks.com/2009/09/02/debugging-search-application-relevance-issues</a></dd>
+						<dt>Options to tune document’s relevance in Solr</dt>
+						<dd class="small"><a href="https://lucidworks.com/2011/12/14/options-to-tune-documents-relevance-in-solr/">https://lucidworks.com/2011/12/14/options-to-tune-documents-relevance-in-solr/</a></dd>
+					</dl>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section MEDIUM EXAMPLE -->
+				<section class="search.example" data-breadcrumb="La búsqueda > Ejemplo">
+					<img src="assets/busqueda/search-medium-peter.png"  width="100%"/>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section FULL TEXT -->
+				<section class="search.full-text" data-breadcrumb="La búsqueda > Full Text > tokenization & stemming">
+					<h3 style="font-variant-caps: all-small-caps">Campos "Full-text" solr.TextField</h3>
+					<p class="fonts9">Análisis léxico, morfológico y relevancia</p><hr>
+					<div class="fonts8">
+						<p>"¿Hay huevos fritos con papas?"</p>
+						🡓
+						<p>"huevos fritos papas patatas"</p>
+						🡓
+						<table>
+							<tr>
+								<td>"huev frit pap"</td>
+								<td>"huev frit patat"</td>
+							</tr>
+						</table>
+
+					</div>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section RELEVANCE -->
+				<section class="search.relevance" data-breadcrumb="La búsqueda > Relevancia">
+					<h3>Relevancia</h3>
+					<p class="xsmall"><em style="color: yellow;">boost</em></p>
+					<p>Añade relevancia a ciertos campos</p>
+					<dl class="fonts8">
+						<dt>Campos existentes en nodos</dt>
+						<dd>Ejemplo: Aumenta la relevancia si la palabra buscada está en el título del artículo</dd>
+						<dt>Campos no existentes (preprocesados)</dt>
+						<dd>Ejemplo: <em>Aumenta la relevancia si a los usuarios con los mismos gustos que los míos les ha gustado el artículo.</em> Este campo lo creamos (e indexamos) y le añadimos valores que podemos usar para dar relevancia</dd>
+					</dl>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section OTRAS OPCIONES -->
+				<section class="search.options-other" data-breadcrumb="La búsqueda > Otras opciones">
+					<p>Autcomplete</p>
+					<p>Autcomplete</p>
+					<p>Autcomplete</p>
+					<p>Autcomplete</p>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section HERRAMIENTAS-->
+				<section class="metadrop chapter-start tools">
+					<h2>Herramientas</h2>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Herramientas Solr server y Search API Solr -->
+				<section class="tools.solr-server-search-api" data-breadcrumb="Herramientas > Solr server y Search API Solr">
+					<h6>¿Cómo se integran? ¿Qué relación tienen?</h6>
+					<img src="assets/solr-drupal-shares.png"  width="100%"/>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Herramientas integracion -->
+				<section class="tools.integration" data-breadcrumb="Herramientas > Integración">
+					<table class="fonts5">
+						<tbody>
+						<tr>
+							<td style="vertical-align: top" width="50%">Solr acepta la configuración propuesta por Drupal</td>
+							<td style="vertical-align: top" width="50%">Drupal aprovecha a Solr para almacenar (indexar) y buscar el contenido</td>
+						</tr>
+						<tr>
+							<td style="vertical-align: middle" width="50%"><img src="assets/solr-drupal-logo.png"  width="300px"/></td>
+							<td style="vertical-align: middle" width="50%"><img src="assets/solr-drupal-shares-II.png"  width="300px"/></td>
+						</tr>
+						</tbody>
+					</table>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Herramientas Diagrama -->
+				<section class="tools.solr-install" data-breadcrumb="Herramientas > Solr > Instalación">
+					<h3>Instalación Solr</h3>
+				</section>
+				<!-- @endsection -->
+
+
+				<section class="tools.solr-install-01" data-breadcrumb="Herramientas > Solr > Instalación > Servidor">
+					<h3>Java</h3>
+					<pre><code data-trim data-noescape class="small">sudo vim /etc/apt/sources.list.d/java-8-debian.list
+# COPIAR
+deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
+deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
+					</code></pre>
+				</section>
+
+
+				<!-- @section Herramientas Diagrama -->
+				<section class="tools.diagram" data-breadcrumb="Herramientas > Diagrama">
+					<h3>Menudo lío</h3>
+					<img src="assets/search-api-uml-diagram.png"  width="100%"/>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Herramientas Relación -->
+				<section class="tools.relation" data-breadcrumb="Herramientas > Relación">
+					<h3>Relación entre Drupal y Solr</h3>
+					<em class="small">¿Qué es indexar? ¿Qué es buscar?</em>
+					<table class="fonts5">
+						<thead>
+						<tr>
+							<th>Drupal</th>
+							<th>Solr</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>Índice</td>
+							<td>Ínidice</td>
+						</tr>
+						<tr>
+							<td>Entidad > Item</td>
+							<td>Documento</td>
+						</tr>
+						<tr>
+							<td>Tipos de campos</td>
+							<td>Tipos de campos</td>
+						</tr>
+						<tr>
+							<td>Campos</td>
+							<td>Campos</td>
+						</tr>
+						<tr>
+							<td>Processors</td>
+							<td>Tokenizer, Stopwords, Stemm</td>
+						</tr>
+						<tr>
+							<td>Data alterations</td>
+							<td>copyField, dynamicField</td>
+						</tr>
+						<tr>
+							<td>Backend / Connector</td>
+							<td>SearchApiSolrBackend / StandardSolrConnector - BasicAuthSolrConnector</td>
+						</tr>
+						</tbody>
+					</table>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Herramientas Tunning -->
+				<section class="tools.tunning" data-breadcrumb="Herramientas > Tuneando - Archivos de configuración">
+					<h3>Tuneando Solr</h3>
+					<div class="fonts5">
+						<p><em>:8983/solr/#/my_core/files</em></p>
+						<table>
+							<tbody>
+							<tr>
+								<td>
+									<img src="assets/tools/solr-ui-admin-files.png" class="hide-pdf" width="100%" />
+								</td>
+								<td>
+									<dl class="fonts8">
+										<dt>Fundamental: README.txt</dt>
+										<dd>search_api_solr/README.txt</dd>
+										<dt>Copia los archivos de configuración</dt>
+										<dd>search_api_solr/solr-conf/VERSION_NUMBER.x</dd>
+										<dt>stopwords_es.txt</dt>
+										<dd>Añade stopwords (con y sin tilde)</dd>
+										<dt>mapping-ISOLatin1Accent.txt</dt>
+										<dd>Añade las entradas correspondientes</dd>
+										<dt>schema_extra_types.xml</dt>
+										<dd>Configura campos para español o tu caso de uso (o usa <a href="https://www.drupal.org/project/search_api_solr_multilingual">Search API Multilingual Solr Search</a>)</dd>
+										<dt>schema_extra_fields.xml</dt>
+										<dd>Implementa los campos que has configurado</dd>
+									</dl>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section DEMO-->
+				<section class="metadrop chapter-start demo">
+					<h2>Demo</h2>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Objetivo demo -->
+				<section class="demo.target" data-breadcrumb="Demo > Objetivo">
+					<h3>Objetivo</h3>
+					<p>Mostrar platos de comida ordenados por lo saludables que son</p>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section DOCUMENTACIÓN -->
+				<section class="metadrop chapter-start docs">
+					<h2>Documentación</h2>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Cheat sheet Drupal -->
+				<section class="docs.pitfails.drupal" data-breadcrumb="Docs > Common pitfails">
+					<h2>Fallos frecuentes</h2>
+					<dl class="fonts5">
+						<dt>No planificar la búsqueda</dt>
+						<dd>Recoge toda la información que puedas sobre hábitos de búsqueda</dd>
+						<dd>Ten en cuenta el contexto. Ej. papas en una página de comida puede ser sinónimo de patatas, mientras que en una de maternidad podría no tener sentido</dd>
+						<dd>Es mejor comenzar con pocos datos a indexar</dd>
+					</dl>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Cheat sheet Drupal -->
+				<section class="docs.cheatsheet.drupal" data-breadcrumb="Docs > Cheat sheet > Drupal">
+					<h2>Drupal - Cheat sheet</h2>
+					<dl class="fonts5">
+						<dt>Converting a SearchAPI query into a Solr query</dt>
+						<dd>SearchApiSolrBackend::search(QueryInterface $query)</dd>
+						<dt>alterSearchApiQuery</dt>
+						<dd>Allow custom changes before converting a SearchAPI query into a Solr query</dd>
+						<dd>hook_search_api_query_alter</dd>
+						<dt>preQuery</dt>
+						<dd>Allow custom changes before sending a search query to Solr.</dd>
+						<dd>hook_search_api_solr_query_alter</dd>
+						<dt>alterSolrDocuments</dt>
+						<dd>Alter Solr documents before they are sent to Solr for indexing.</dd>
+						<dd>hook_search_api_solr_documents_alter</dd>
+					</dl>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Cheat sheet Solr -->
+				<section class="docs.cheatsheet.solr" data-breadcrumb="Docs > Cheat sheet > Solr">
+					<h3>Solr - Cheat sheet</h3>
+					<dl class="fonts5">
+						<dt>Apache Solr Reference Guide</dt>
+						<dd><a href="https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide">https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide</a></dd>
+						<dt>Solr resources</dt>
+						<dd><a href="https://lucene.apache.org/solr/resources.html#documentation">https://lucene.apache.org/solr/resources.html#documentation</a></dd>
+						<dt>Solarium project</dt>
+						<dd><a href="http://www.solarium-project.org">http://www.solarium-project.org</a></dd>
+						<dd>Explore the benefits / drawbacks of integrating with the Solarium library (<a href="https://www.drupal.org/node/1351752">Drupal issue</a> )</dd>
+						<dt>Lucene vs Solr</dt>
+						<dd><a href="http://www.lucenetutorial.com/lucene-vs-solr.html">http://www.lucenetutorial.com/lucene-vs-solr.html</a></dd>
+						<dt>What the fq? A short summary of Solr query fields.</dt>
+						<dd><a href="https://www.triquanta.nl/blog/what-fq-short-summary-solr-query-fields">https://www.triquanta.nl/blog/what-fq-short-summary-solr-query-fields</a></dd>
+						<dt>Analyzers</dt>
+						<dd><a href="https://cwiki.apache.org/confluence/display/solr/Analyzers">https://cwiki.apache.org/confluence/display/solr/Analyzers</a></dd>
+						<dt>Tokenizers</dt>
+						<dd><a href="https://cwiki.apache.org/confluence/display/solr/About+Tokenizers">https://cwiki.apache.org/confluence/display/solr/About+Tokenizers</a></dd>
+						<dt>Filters</dt>
+						<dd><a href="https://cwiki.apache.org/confluence/display/solr/About+Filters">https://cwiki.apache.org/confluence/display/solr/About+Filters</a></dd>
+						<dt>What is term vector in Lucene</dt>
+						<dd><a href="http://makble.com/what-is-term-vector-in-lucene">http://makble.com/what-is-term-vector-in-lucene</a></dd>
+					</dl>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section Cheat sheet Solr -->
+				<section class="docs.references" data-breadcrumb="Docs > Referencias">
+					<h2>Referencias</h2>
+					<dl class="fonts5">
+						<dt>Búsquedas "Full Text"</dt>
+						<dd><a href="https://en.wikipedia.org/wiki/Full-text_search">https://en.wikipedia.org/wiki/Full-text_search</a></dd>
+						<dd><a href="http://stackoverflow.com/questions/224714/what-is-full-text-search-vs-like">http://stackoverflow.com/questions/224714/what-is-full-text-search-vs-like</a></dd>
+					</dl>
+				</section>
+				<!-- @endsection -->
+
+				<section>
+					<h2>¡Muchas gracias!</h2>
+					<p class="fonts5"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p>
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
