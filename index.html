@@ -60,109 +60,103 @@
 					<img src="assets/metadrop-logo.svg" class="metadrop-logo">
 				</section>
 
-				<!-- @section INTRODUCCIÓN-->
-				<section class="metadrop.chapter-start intro" data-breadcrumb="Introducción">
-					<h1>Search API Solr en Drupal 8</h1>
-					<p class="small"><i>"Bases prácticas para encontrar lo buscado"</i></p>
-					<br>
-				</section>
-				<!-- @endsection -->
 
-				<!-- @section -->
-				<section class="intro.metadrop">
-					<p>Agustín Gómez</p>
-					<img src="assets/intro/agus-foto.jpg" alt="TuWebO's picture" title="TuWebO's picture">
-					<table class="small">
-						<tbody>
-						<tr>
-							<td>Drupal</td>
-							<td>
-								<a href="http://www.drupal.org/u/TuWebO">drupal.org/u/TuWebO</a>
-								<p class="small">Desarrollador y Site-Builder</p>
-							</td>
-						</tr>
-						<tr>
-							<td>IRC</td>
-							<td><a href="irc://irc.freenode.net:6667/drupal-es">TuWebO</a><p class="small">#drupal-es<br>#drupal-search-api</p></td>
-						</tr>
-						<tr>
-							<td>Twitter</td>
-							<td><a href="https://twitter.com/TuWebO">twitter.com/TuWebO</a></td>
-						</tr>
-						<tr>
-							<td>Metadrop</td>
-							<td><a href="http://www.metadrop.net">www.metadrop.net</a></td>
-						</tr>
-						</tbody>
-					</table>
+				<section class="intro" style="top: 104px; display: block;">
+					<p class="xsmall left"><em>Vamos a hablar de:</em></p>
+					<ol>
+						<li>Breve historia de Search API y Search API Solr</li>
+						<li>Elementos de las páginas de búsqueda</li>
+						<li>Precisión en los resultados y campos FullText</li>
+						<li>Configuración de Search API Solr</li>
+						<li>Configuración de Solr</li>
+						<li>Ejemplo / Demo</li>
+					</ol>
 				</section>
-				<!-- @endsection -->
-
-				<!-- @section -->
-				<section class="intro.objetives" data-breadcrumb="Introducción > Objetivos">
-					<h3>Objetivos</h3>
-					<dl>
-						<dd>
-							Conocer algunos detalles de las páginas de búsqueda
-						</dd>
-						<dd>
-							Configurar Drupal 8 y Search API Solr para ofrecer resultados relevantes y precisos
-						</dd>
-					</dl>
-				</section>
-				<!-- @endsection -->
 
 				<!-- @section HISTORIA-->
-				<section class="metadrop chapter-start history">
-					<h2>Historia - Search API Solr</h2>
+				<section class="chapter-start history">
+					<h2>Historia</h2>
 				</section>
 				<!-- @endsection -->
 
 				<!-- @section BATTLE PLAN -->
-				<section class="history.battleplan" data-breadcrumb="Historia > Battleplan">
-					<h2>Battleplan</h2>
-					<p class="fonts5"><a href="https://dev.acquia.com/blog/search-strategies-in-drupal-8/battleplan-for-search--solr-in-drupal-8/09/05/2016/10421">Battleplan for Search & Solr in Drupal 8</a></p>
-					<table>
-						<tbody>
+				<section class="history.battleplan">
+					<h3>Battleplan</h3>
+					<p class="small"><em>"Contrib Search maintainers are committed to make Drupal 8 kick ass with Search API."</em></p>
+					<table class="xsmall">
 						<tr>
-							<td>
-								<p><img src="assets/history/drunkenmonkey-picture.jpg" alt="drunken monkey's picture" title="drunken monkey's picture"></p>
-								<p class="small">Thomas Seidl<br><a href="https://www.drupal.org/u/drunken-monkey">@drunken monkey</a></p>
-							</td>
-							<td>
-								<p><img src="assets/history/nickveenhoj-picture.jpg" alt="Nick_vh's picture" title="Nick_vh's picture"></p>
-								<p class="small">Nick Veenhof<br><a href="https://www.drupal.org/u/nick_vh">@nick_vh</a></p>
-							</td>
+							<th style="border-bottom: none">Drupal 6</th>
+							<td style="border-bottom: none"><a href="https://www.drupal.org/project/apachesolr">Apache Solr Search</a></td>
 						</tr>
-						</tbody>
+						<tr>
+							<th style="border-bottom: none" rowspan="3">Drupal 7</th>
+							<td style="border-bottom: none"><a href="https://www.drupal.org/project/apachesolr">Apache Solr Search</a></td>
+						</tr>
+						<tr>
+							<td style="border-bottom: none"><a href="https://www.drupal.org/project/search_api">Search API</a></td>
+						</tr>
+						<tr>
+							<td style="border-bottom: none"><a href="https://www.drupal.org/project/search_api_solr">Search API Solr Search</a></td>
+						</tr>
+						<tr>
+							<th style="border-bottom: none" rowspan="2">Drupal 8</th>
+							<td style="border-bottom: none"><a href="https://www.drupal.org/project/search_api">Search API</a> + <a href="https://www.drupal.org/docs/8/modules/search-api/getting-started/server-backends-and-features">Server backends and features</a> + <a href="https://www.drupal.org/node/2763131">Instalación Solarium</a></td>
+						</tr>
 					</table>
-					<em>"Contrib Search maintainers are committed to make Drupal 8 kick ass with Search API."</em>
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section GIT LOG -->
-				<section class="history.benefits" data-breadcrumb="Historia > Beneficios">
-					<h2>git log</h2>
-					<pre><code data-trim data-noescape class="small">git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ad)%C(reset) %C(bold white)%s%C(reset) %C(red)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-					</code></pre>
-					<img src="assets/history/git-log.png"  width="100%"/>
+				<!-- @section TIMELINE -->
+				<section class="history.timeline">
+					<h3>Time line</h3>
+					<p class="xsmall">26 Abr 2017 - Official stable release</p>
+					<table class="xsmall">
+						<tr>
+							<th>2017</th>
+							<td><a href="https://drunkenmonkey.at/blog/search_api_d8_release">Search API in Drupal 8 is about to be stable!</a></td>
+						</tr>
+						<tr>
+							<th rowspan="2">2016</th>
+							<td style="border-bottom: none"><a href="https://www.drupal.org/node/2831801">Add support for extract to Connector API</a><br><span class="small">Integra distintas "configuraciones" en Search API Solr</span></td>
+						</tr>
+						<tr>
+							<td><a href="https://dev.acquia.com/blog/search-strategies-in-drupal-8/battleplan-for-search--solr-in-drupal-8/09/05/2016/10421">Battleplan for Search & Solr in Drupal 8</a><br><span class="small">Acquia invierte esfuerzo para unificar el módulo Search API</span></td>
+						</tr>
+						<tr>
+							<th rowspan="3">2013</th>
+							<td style="border-bottom: none"><a href="https://drunkenmonkey.at/blog/search-api-d8-kickoff-in-szeged">Kicking off the Search API D8 port (again) in Szeged</a><br><span class="small">¡Cogemos fuerzas de nuevo!</span></td>
+						</tr>
+						<tr>
+							<td style="border-bottom: none"><a href="https://groups.drupal.org/node/327723">(Solr) Search in Drupal 8</a><br><span class="small">Search del core, Query classes, Index logic...</span></td>
+						</tr>
+						<tr>
+							<td><a href="https://www.drupal.org/node/2044311">Change workflow plugin system</a><br><span class="small">Unify processors and data alterations, datasources, service classes into proper plugins</span></td>
+						</tr>
+						<tr>
+							<th>2012</th>
+							<td><a href="https://barcelona2012.drupaldays.org/sessions/drupal-search-and-solr-wizardry">Solr Wizardry at Dev Days Barcelona 2012</a><br><span class="small">Colaboración entre mantenedores</span></td>
+						</tr>
+					</table>
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section DONDE ESTAMOS -->
-				<section class="history.where-are-we" data-breadcrumb="Historia > Dónde estamos">
-					<h2>Dónde estamos</h2>
-					<p><a href="https://drunkenmonkey.at/blog/search_api_d8_release">Search API in Drupal 8 is about to be stable!</a></p>
-					<p class="fonts5">https://drunkenmonkey.at/blog/search_api_d8_release</p>
-					<img src="assets/history/drunken-monkey-d8-rc.png"  width="100%"/>
+				<!-- @section BENEFICIOS -->
+				<section class="history.benefits">
+					<h3>Beneficios</h3>
+					<div class="left">
+						<p>Search API como módulo base</p>
+						<p>Se puede compartir mucha funcionalidad entre backends</p>
+						<p>Evitar duplicar esfuerzos</p>
+						<p>Aprovechar el potencial de Drupal 8</p>
+					</div>
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section DONDE ESTAMOS -->
-				<section class="history.contribute" data-breadcrumb="Historia > Contribuir">
-					<h2>¡Contribuye!</h2>
+				<!-- @section CONTRIBUYE -->
+				<section class="history.contribute">
+					<h3>¡Contribuye!</h3>
 					<p>Empieza por la Documentación</p>
-					<table class="small">
+					<table class="xsmall">
 						<tbody>
 						<tr>
 							<td style="vertical-align: top"><a href="https://www.drupal.org/docs/7/modules/search-api">
@@ -235,7 +229,7 @@
 				<!-- @section FULL TEXT -->
 				<section class="search.full-text" data-breadcrumb="La búsqueda > Full Text > tokenization & stemming">
 					<h3 style="font-variant-caps: all-small-caps">Campos "Full-text" solr.TextField</h3>
-					<p class="fonts9">Análisis léxico, morfológico y relevancia</p><hr>
+					<p>Análisis léxico, morfológico y relevancia</p><hr>
 					<div class="fonts8">
 						<p>"¿Hay huevos fritos con papas?"</p>
 						🡓
@@ -290,7 +284,7 @@
 
 				<!-- @section Herramientas integracion -->
 				<section class="tools.integration" data-breadcrumb="Herramientas > Integración">
-					<table class="fonts5">
+					<table class="xsmall">
 						<tbody>
 						<tr>
 							<td style="vertical-align: top" width="50%">Solr acepta la configuración propuesta por Drupal</td>
@@ -333,7 +327,7 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 				<section class="tools.relation" data-breadcrumb="Herramientas > Relación">
 					<h3>Relación entre Drupal y Solr</h3>
 					<em class="small">¿Qué es indexar? ¿Qué es buscar?</em>
-					<table class="fonts5">
+					<table class="xsmall">
 						<thead>
 						<tr>
 							<th>Drupal</th>
@@ -377,7 +371,7 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 				<!-- @section Herramientas Tunning -->
 				<section class="tools.tunning" data-breadcrumb="Herramientas > Tuneando - Archivos de configuración">
 					<h3>Tuneando Solr</h3>
-					<div class="fonts5">
+					<div class="xsmall">
 						<p><em>:8983/solr/#/my_core/files</em></p>
 						<table>
 							<tbody>
@@ -430,7 +424,7 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 				<!-- @section Cheat sheet Drupal -->
 				<section class="docs.pitfails.drupal" data-breadcrumb="Docs > Common pitfails">
 					<h2>Fallos frecuentes</h2>
-					<dl class="fonts5">
+					<dl class="xsmall">
 						<dt>No planificar la búsqueda</dt>
 						<dd>Recoge toda la información que puedas sobre hábitos de búsqueda</dd>
 						<dd>Ten en cuenta el contexto. Ej. papas en una página de comida puede ser sinónimo de patatas, mientras que en una de maternidad podría no tener sentido</dd>
@@ -442,7 +436,7 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 				<!-- @section Cheat sheet Drupal -->
 				<section class="docs.cheatsheet.drupal" data-breadcrumb="Docs > Cheat sheet > Drupal">
 					<h2>Drupal - Cheat sheet</h2>
-					<dl class="fonts5">
+					<dl class="xsmall">
 						<dt>Converting a SearchAPI query into a Solr query</dt>
 						<dd>SearchApiSolrBackend::search(QueryInterface $query)</dd>
 						<dt>alterSearchApiQuery</dt>
@@ -461,7 +455,7 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 				<!-- @section Cheat sheet Solr -->
 				<section class="docs.cheatsheet.solr" data-breadcrumb="Docs > Cheat sheet > Solr">
 					<h3>Solr - Cheat sheet</h3>
-					<dl class="fonts5">
+					<dl class="xsmall">
 						<dt>Apache Solr Reference Guide</dt>
 						<dd><a href="https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide">https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide</a></dd>
 						<dt>Solr resources</dt>
@@ -488,7 +482,7 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 				<!-- @section Cheat sheet Solr -->
 				<section class="docs.references" data-breadcrumb="Docs > Referencias">
 					<h2>Referencias</h2>
-					<dl class="fonts5">
+					<dl class="xsmall">
 						<dt>Búsquedas "Full Text"</dt>
 						<dd><a href="https://en.wikipedia.org/wiki/Full-text_search">https://en.wikipedia.org/wiki/Full-text_search</a></dd>
 						<dd><a href="http://stackoverflow.com/questions/224714/what-is-full-text-search-vs-like">http://stackoverflow.com/questions/224714/what-is-full-text-search-vs-like</a></dd>
@@ -498,7 +492,7 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 
 				<section>
 					<h2>¡Muchas gracias!</h2>
-					<p class="fonts5"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p>
+					<p class="xsmall"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p>
 				</section>
 
 
