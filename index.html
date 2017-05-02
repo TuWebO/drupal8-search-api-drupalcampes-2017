@@ -66,7 +66,7 @@
 					<ol>
 						<li>Breve historia de Search API y Search API Solr</li>
 						<li>Elementos de las páginas de búsqueda</li>
-						<li>Precisión en los resultados y campos FullText</li>
+						<li>La búsqueda</li>
 						<li>Configuración de Search API Solr</li>
 						<li>Configuración de Solr</li>
 						<li>Ejemplo / Demo</li>
@@ -193,7 +193,7 @@
 							<td style="vertical-align: middle">
 								<ul>
 									<li>Search API como módulo principal</li>
-									<li>Search API Solr como backend</li>
+									<li>Search API Solr</li>
 									<li>Integrar los demás módulos sin perder funcionlidad</li>
 								</ul>
 							</td>
@@ -245,7 +245,7 @@
 						<li>Interfaz para añadir campos a los items</li>
 						<li>Multidioma integrado en Search API</li>
 						<li>Mayor facilidad para integrar módulos como el <a href="https://www.drupal.org/project/search_api_solr_multilingual">Search API Solr Multilingual</a></li>
-						<li>Processors mucha mayor funcionalidad</li>
+						<li>Processors más poderosos</li>
 						<li>Muchas estructuras han sido converitdas en Clases</li>
 						<li>Muchas funciones helper pasan a ser service classes</li>
 						<li>Integración con Tests</li>
@@ -281,14 +281,14 @@
 
 				<!-- @section EJEMPLO PÁGINA DE BÚSQUED -->
 				<section class="page-search.elements">
-					<h3>Ejemplo</h3>
+					<h4>Facets, filtros, sorts, rangos, resaltado...</h4>
 						<img src="assets/busqueda/apachesolr_module_page.jpg" width="70%">
 				</section>
 				<!-- @endsection -->
 
 				<!-- @section NÓDULOS QUE OFRECEN FUNCIONALIDAD-->
 				<section class="page-search.modules">
-					<h3>Módulos</h3>
+					<h3>Módulos de Drupal</h3>
 					<p class="xxsmall"><a href="https://www.drupal.org/docs/8/modules/search-api/extension-modules">https://www.drupal.org/docs/8/modules/search-api/extension-modules</a></p>
 					<table class="small">
 						<tr>
@@ -344,7 +344,7 @@
 
 				<!-- @section PAGINA NO ELEMENTOS -->
 				<section class="page-search.tapas-bar-example">
-					<h3>¿Qué resultados devolver y en qué orden?</h3>
+					<h3>¿Qué almacenamos y cómo para ofrecer buenos resutlados?</h3>
 					<img src="assets/busqueda/tapas-bar-ejemplo-01.png">
 				</section>
 				<!-- @endsection -->
@@ -411,106 +411,122 @@
 				<!-- @section Herramientas Diagrama -->
 				<section class="search-api-solr-config.install">
 					<h3>Instalación</h3>
-					<dl>
-						<dd>Solr server</dd>
-						<dd>Search desactivado</dd>
-						<dd>Search API Solr</dd>
-					</dl>
-				</section>
-				<!-- @endsection -->
-
-
-				<section class="search-api-solr-config.server">
-					<h3>Servidor</h3>
-					<dl>
-						<dd>Editar</dd>
-						<dd>Pestaña files</dd>
-					</dl>
-				</section>
-
-
-				<section class="search-api-solr-config.index">
-					<h3>Índice</h3>
-					<dl>
-						<dd>Data sources (item types)</dd>
-						<dd>Index items immediately (Recomendado si la info es sensible)</dd>
-					</dl>
-				</section>
-
-
-				<section class="search-api-solr-config.add-fields">
-					<h3>Add Fields</h3>
-
-					<ol class="xsmall">
-						<li>General muestra propiedades que pueden haber sido añadidas por procesadores</li>
-						<li>Content muestra propiedades de la entidad</li>
-						<li>Varios campos se pueden asociar a una propiedad, de tal forma que se almacenan y buscan de forma diferente</li>
-						<li>El type se puede alterar</li>
-						<li>Machine name corresponde a nombre de solr también (procesado para algunas cadenas)</li>
-						<li>Item, campos, propiedades....</li>
-						<li>Devel</li>
+					<p class="xsmall">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (<a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a>)</p>
+					<ol>
+						<li>Servidor / Backend / Connector</li>
+						<li>Índice / Servidor / Datasources</li>
+						<li>Campos del "Item" a indexar</li>
+						<li>Procesadores</li>
+						<li>Vista para buscar contenido y mostrar resultado</li>
 					</ol>
 				</section>
+				<!-- @endsection -->
 
 
-				<section class="search-api-solr-config.processors">
-					<h3>Procesadores</h3>
-					<dl>
-						<dd>Alteran propiedades (antiguos data alterations)</dd>
-						<dd>Procesa campos en distintas fases (indexado, query)</dd>
-						<dd><span style="display: inline-block; vertical-align: middle" class="new xxsmall">Nuevo</span> Enable on all supported fields</dd>
-					</dl>
+				<section class="search-api-solr-config.step-01">
+					<p class="xxsmall">Paso 1</p>
+					<h4>Server / Backend</h4>
+					<img src="assets/install/add-server-custom.png">
 				</section>
 
+				<section class="search-api-solr-config.step-02">
+					<p class="xxsmall">Paso 2</p>
+					<h4>Connector</h4>
+					<img src="assets/install/add-server-connector.png">
+				</section>
 
-				<!-- @section Herramientas Relación -->
-				<section class="search-api-solr-config.relation">
-					<h3>Relación entre Drupal y Solr</h3>
-					<em class="small">¿Qué es indexar? ¿Qué es buscar?</em>
-					<table class="xsmall">
-						<thead>
+				<section class="search-api-solr-config.step-03">
+					<p class="xxsmall">Paso 3</p>
+					<h4>Drupal apunta a Solr</h4>
+					<table>
 						<tr>
-							<th>Drupal</th>
-							<th>Solr</th>
+							<td class="xsmall featured" style="vertical-align: top;">:8983/solr/#/~cores/tapas_bar<br><img src="assets/install/solr-core-admin.png" width="100%"></td>
+							<td class="xsmall featured" style="vertical-align: top;">/admin/config/search/search-api/add-server<br><img src="assets/install/add-server-ip.png" width="100%"></td>
 						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>Índice</td>
-							<td>Ínidice</td>
-						</tr>
-						<tr>
-							<td>Entidad > Item</td>
-							<td>Documento</td>
-						</tr>
-						<tr>
-							<td>Tipos de campos</td>
-							<td>Tipos de campos</td>
-						</tr>
-						<tr>
-							<td>Campos</td>
-							<td>Campos</td>
-						</tr>
-						<tr>
-							<td>Processors</td>
-							<td>Tokenizer, Stopwords, Stemm</td>
-						</tr>
-						<tr>
-							<td>Data alterations</td>
-							<td>copyField, dynamicField</td>
-						</tr>
-						<tr>
-							<td>Backend / Connector</td>
-							<td>SearchApiSolrBackend / StandardSolrConnector - BasicAuthSolrConnector</td>
-						</tr>
-						</tbody>
 					</table>
 				</section>
-				<!-- @endsection -->
-				<section class="search-api-solr-config.demo">
-					<h3>Demo</h3>
+
+				<section class="search-api-solr-config.step-04">
+					<p class="xxsmall">Paso 4</p>
+					<h4>Comprobamos archivos</h4>
+					<table>
+						<tr>
+							<td class="xsmall featured" style="vertical-align: top;">:8983/solr/#/tapas_bar/files<br><img src="assets/install/solr-files-admin.png" width="100%"></td>
+							<td class="xsmall featured" style="vertical-align: top;">admin/config/search/search-api/server/experimental_solr_server/files<br><img src="assets/install/add-server-check.png"></td>
+						</tr>
+					</table>
+
 				</section>
 
+
+				<section class="search-api-solr-config.step-05">
+					<p class="xxsmall">Paso 5</p>
+					<h4>Crear índice</h4>
+					<img src="assets/install/add-index.png">
+				</section>
+
+				<section class="search-api-solr-config.step-06">
+					<p class="xxsmall">Paso 6</p>
+					<h4>Configurar data source</h4>
+					<img src="assets/install/configure-datasource-server.png">
+				</section>
+
+
+				<section class="search-api-solr-config.step-07">
+					<p class="xxsmall">Paso 7</p>
+					<h4>Guardar y añadir campos</h4>
+					<img src="assets/install/install-index-options.png">
+				</section>
+
+
+				<section class="search-api-solr-config.step-08">
+					<p class="xxsmall">Paso 8</p>
+					<h4>Añadir campos al índice</h4>
+					<img src="assets/install/add-fields-empty.png">
+				</section>
+
+				<section class="search-api-solr-config.step-09">
+					<p class="xxsmall">Paso 9</p>
+					<h4>Tierra de nadie</h4>
+					<p class="xsmall">Resumiendo mucho...</p>
+					<img src="assets/install/nodo-documento.png">
+					<div class="xsmall">
+						<p class="left">Estamos en un punto intermedio, vamos a añadir la información que queremos indexar</p>
+						<p class="left">Esta información viene en forma de propiedades, por ejemplo campos del nodo (Content) o campos añadidos por procesadores (General)</p>
+						<p class="left">Añadimos uno (o más) campos por cada propiedad</p>
+					</div>
+				</section>
+
+				<section class="search-api-solr-config.step-10">
+					<p class="xxsmall">Paso 10</p>
+					<h4>Campos añadidos</h4>
+					<p class="xxsmall">Seleccionamos un tipo y un boost.<br><em>@NOTE: Hemos indexado el campo títle del nodo dos veces, lo vamos a almacenar como tipos distintos (string y text)</em></p>
+					<img src="assets/install/index-fields-added.png" width="80%">
+
+				</section>
+
+				<section class="search-api-solr-config.step-11">
+					<p class="xxsmall">Paso 11</p>
+					<h4>Comprobar - Módulo Devel</h4>
+					<p class="xsmall">Antes de nada, puedes activar el módulo <a href="https://www.drupal.org/project/devel">Devel</a> y comprobar cómo se van a mapear los campos que has añadido.<br><em>[TIPO][CARDINALIDAD]_[MACHINE_NAME]</em></p>
+					<img src="assets/install/devel-node-solr.png" width="60%">
+				</section>
+
+
+				<section class="search-api-solr-config.step-12">
+					<p class="xxsmall">Paso 12</p>
+					<h4>Configurar Procesadores</h4>
+					<p class="xsmall">Activar los menos posibles. Algunos pueden interferir con "procesadores" de Solr.</p>
+					<p class="xsmall">Por lo general los procesadores, añaden "propiedades" o alteran los valores de los campos (en distintas etapas del proceso)</p>
+					<img src="assets/install/index-processors.png" width="100%">
+				</section>
+
+				<section class="search-api-solr-config.step-13">
+					<p class="xxsmall">Paso 13</p>
+					<h4>Indexamos</h4>
+					<p class="xsmall">Todo esto <a href="https://www.drupal.org/u/borisson_">@borisson_</a> lo hace en 47 segundos ;)<br>Si activas el módulo <em>search_api_solr_defaults</em> parte de la configuración la tienes hecha. Incluyendo una vista por defecto.</p>
+					<img src="assets/install/indexing-admin.png" width="100%">
+				</section>
 
 
 				<!-- @section SEARCH API SOLR CONFIG-->
