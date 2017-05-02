@@ -383,7 +383,7 @@
 
 				<!-- @section FULL TEXT -->
 				<section class="search.full-text">
-					<h3 style="font-variant-caps: all-small-caps">Campos "Full-text"</h3>
+					<h3 style="font-variant-caps: all-small-caps">Campos "FullText"</h3>
 					<p class="small">Análisis léxico, morfológico y relevancia</p><hr>
 					<div>
 						<p>"¿Hay huevos fritos con papas?"</p>
@@ -396,67 +396,75 @@
 								<td>"huev frit patat"</td>
 							</tr>
 						</table>
-
 					</div>
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section HERRAMIENTAS-->
-				<section class="metadrop chapter-start tools">
-					<h2>Herramientas</h2>
+
+				<!-- @section SEARCH API SOLR CONFIG-->
+				<section class="chapter-start search-api-solr-config">
+					<h2>Configuración de Search API Solr</h2>
 				</section>
 				<!-- @endsection -->
-
-				<!-- @section Herramientas Solr server y Search API Solr -->
-				<section class="tools.solr-server-search-api" data-breadcrumb="Herramientas > Solr server y Search API Solr">
-					<h6>¿Cómo se integran? ¿Qué relación tienen?</h6>
-					<img src="assets/solr-drupal-shares.png"  width="100%"/>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section Herramientas integracion -->
-				<section class="tools.integration" data-breadcrumb="Herramientas > Integración">
-					<table class="xsmall">
-						<tbody>
-						<tr>
-							<td style="vertical-align: top" width="50%">Solr acepta la configuración propuesta por Drupal</td>
-							<td style="vertical-align: top" width="50%">Drupal aprovecha a Solr para almacenar (indexar) y buscar el contenido</td>
-						</tr>
-						<tr>
-							<td style="vertical-align: middle" width="50%"><img src="assets/solr-drupal-logo.png"  width="300px"/></td>
-							<td style="vertical-align: middle" width="50%"><img src="assets/solr-drupal-shares-II.png"  width="300px"/></td>
-						</tr>
-						</tbody>
-					</table>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section Herramientas Diagrama -->
-				<section class="tools.solr-install" data-breadcrumb="Herramientas > Solr > Instalación">
-					<h3>Instalación Solr</h3>
-				</section>
-				<!-- @endsection -->
-
-
-				<section class="tools.solr-install-01" data-breadcrumb="Herramientas > Solr > Instalación > Servidor">
-					<h3>Java</h3>
-					<pre><code data-trim data-noescape class="small">sudo vim /etc/apt/sources.list.d/java-8-debian.list
-# COPIAR
-deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
-deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
-					</code></pre>
-				</section>
 
 
 				<!-- @section Herramientas Diagrama -->
-				<section class="tools.diagram" data-breadcrumb="Herramientas > Diagrama">
-					<h3>Menudo lío</h3>
-					<img src="assets/search-api-uml-diagram.png"  width="100%"/>
+				<section class="search-api-solr-config.install">
+					<h3>Instalación</h3>
+					<dl>
+						<dd>Solr server</dd>
+						<dd>Search desactivado</dd>
+						<dd>Search API Solr</dd>
+					</dl>
 				</section>
 				<!-- @endsection -->
+
+
+				<section class="search-api-solr-config.server">
+					<h3>Servidor</h3>
+					<dl>
+						<dd>Editar</dd>
+						<dd>Pestaña files</dd>
+					</dl>
+				</section>
+
+
+				<section class="search-api-solr-config.index">
+					<h3>Índice</h3>
+					<dl>
+						<dd>Data sources (item types)</dd>
+						<dd>Index items immediately (Recomendado si la info es sensible)</dd>
+					</dl>
+				</section>
+
+
+				<section class="search-api-solr-config.add-fields">
+					<h3>Add Fields</h3>
+
+					<ol class="xsmall">
+						<li>General muestra propiedades que pueden haber sido añadidas por procesadores</li>
+						<li>Content muestra propiedades de la entidad</li>
+						<li>Varios campos se pueden asociar a una propiedad, de tal forma que se almacenan y buscan de forma diferente</li>
+						<li>El type se puede alterar</li>
+						<li>Machine name corresponde a nombre de solr también (procesado para algunas cadenas)</li>
+						<li>Item, campos, propiedades....</li>
+						<li>Devel</li>
+					</ol>
+				</section>
+
+
+				<section class="search-api-solr-config.processors">
+					<h3>Procesadores</h3>
+					<dl>
+						<dd>Alteran propiedades (antiguos data alterations)</dd>
+						<dd>Procesa campos en distintas fases (indexado, query)</dd>
+						<dd><span style="display: inline-block; vertical-align: middle" class="new xxsmall">Nuevo</span> Enable on all supported fields</dd>
+					</dl>
+				</section>
+
 
 				<!-- @section Herramientas Relación -->
-				<section class="tools.relation" data-breadcrumb="Herramientas > Relación">
+				<section class="search-api-solr-config.relation">
 					<h3>Relación entre Drupal y Solr</h3>
 					<em class="small">¿Qué es indexar? ¿Qué es buscar?</em>
 					<table class="xsmall">
@@ -499,9 +507,21 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 					</table>
 				</section>
 				<!-- @endsection -->
+				<section class="search-api-solr-config.demo">
+					<h3>Demo</h3>
+				</section>
+
+
+
+				<!-- @section SEARCH API SOLR CONFIG-->
+				<section class="search-api-solr-config.solr-config">
+					<h2>Configuración de Solr</h2>
+				</section>
+				<!-- @endsection -->
+
 
 				<!-- @section Herramientas Tunning -->
-				<section class="tools.tunning" data-breadcrumb="Herramientas > Tuneando - Archivos de configuración">
+				<section class="search-api-solr-config.tuning">
 					<h3>Tuneando Solr</h3>
 					<div class="xsmall">
 						<p><em>:8983/solr/#/my_core/files</em></p>
@@ -535,20 +555,19 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 				<!-- @endsection -->
 
 				<!-- @section DEMO-->
-				<section class="metadrop chapter-start demo">
-					<h2>Demo</h2>
+				<section class="search-api-solr-config.demo">
+					<h3>Demo</h3>
 				</section>
 				<!-- @endsection -->
 
 				<!-- @section Objetivo demo -->
-				<section class="demo.target" data-breadcrumb="Demo > Objetivo">
-					<h3>Objetivo</h3>
-					<p>Mostrar platos de comida ordenados por lo saludables que son</p>
+				<section class="chapter-start example">
+					<h2>Ejemplo</h2>
 				</section>
 				<!-- @endsection -->
 
 				<!-- @section DOCUMENTACIÓN -->
-				<section class="metadrop chapter-start docs">
+				<section class="chapter-start docs">
 					<h2>Documentación</h2>
 				</section>
 				<!-- @endsection -->
