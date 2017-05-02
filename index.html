@@ -525,7 +525,7 @@
 				<section class="search-api-solr-config.step-13">
 					<p class="xxsmall">Paso 13</p>
 					<h4>Indexamos</h4>
-					<p class="xsmall">Todo esto <a href="https://www.drupal.org/u/borisson_">@borisson_</a> lo hace en 47 segundos ;)<br>Si activas el módulo <em>search_api_solr_defaults</em> parte de la configuración la tienes hecha. Incluyendo una vista por defecto.</p>
+					<p class="xsmall">Search API Solr incluye el módulo <em>search_api_solr_defaults</em>, donde parte de la configuración la tienes hecha, incluyendo una vista por defecto.</p>
 					<img src="assets/install/indexing-admin.png" width="100%">
 				</section>
 
@@ -539,8 +539,15 @@
 				<section class="search-api-solr-config.step-15">
 					<p class="xxsmall">Paso 15</p>
 					<h4>Configuramos vista</h4>
-					<p class="xxsmall">No cacheamos. Añadimos filtro expuesto de "Full text search" y seleccionamos los campos sobre los que queremos buscar. Ordenamos por relevancia DESC (podemos añadir después fecha DESC por ejemplo), configuramos permisos de acceso, filtramos por tipo de contenido y por estado del contenido (publicado o no).</p>
+					<p class="xxsmall">No cacheamos. Añadimos filtro expuesto de "Full text search" y lo configuramos para que no admita menos de dos caracteres y seleccionamos los campos sobre los que queremos buscar. Ordenamos por relevancia DESC (podemos añadir después fecha DESC por ejemplo), configuramos permisos de acceso, filtramos por tipo de contenido y por estado del contenido (publicado o no). Añadimos resumen de resultados en la cabecera y texto cuando no hay resultados.</p>
 					<img src="assets/install/views-admin-configuration.png" width="100%">
+				</section>
+
+				<section class="search-api-solr-config.step-16">
+					<p class="xxsmall">Paso 16</p>
+					<h4>Comprobamos</h4>
+					<p class="small">Yeahhh!!!!</p>
+					<img src="assets/install/view-platos-results-simple.png" width="100%">
 				</section>
 
 				<!-- @section SEARCH API SOLR CONFIG-->
