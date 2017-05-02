@@ -189,6 +189,7 @@
 					<h3>Nuestra meta</h3>
 					<table>
 						<tr>
+							<td style="vertical-align: top"><img src="assets/history/icon-w-drupal8-search-api.png" width="80%"></td>
 							<td style="vertical-align: middle">
 								<ul>
 									<li>Search API como módulo principal</li>
@@ -196,7 +197,6 @@
 									<li>Integrar los demás módulos sin perder funcionlidad</li>
 								</ul>
 							</td>
-							<td style="vertical-align: top"><img src="assets/history/icon-w-drupal8-search-api.png" width="80%"></td>
 						</tr>
 					</table>
 
@@ -281,8 +281,71 @@
 
 				<!-- @section EJEMPLO PÁGINA DE BÚSQUED -->
 				<section class="page-search.elements">
-					<h3>Apache Solr ejemplo</h3>
-					<img src="assets/busqueda/apachesolr_module_page.jpg" width="70%">
+					<h3>Ejemplo</h3>
+						<img src="assets/busqueda/apachesolr_module_page.jpg" width="70%">
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section NÓDULOS QUE OFRECEN FUNCIONALIDAD-->
+				<section class="page-search.modules">
+					<h3>Módulos</h3>
+					<p class="xxsmall"><a href="https://www.drupal.org/docs/8/modules/search-api/extension-modules">https://www.drupal.org/docs/8/modules/search-api/extension-modules</a></p>
+					<table class="small">
+						<tr>
+							<th>Server backends</th>
+							<th>Otros módulos</th>
+						</tr>
+						<tr>
+							<td><a href="https://www.drupal.org/project/search_api_solr">Solr search</a></td>
+							<td><a href="https://www.drupal.org/project/flag_search_api">Flag Search API</a></td>
+						</tr>
+						<tr>
+							<td><a href="https://www.drupal.org/project/search_api_solr_multilingual">Multilingual Solr search</a></td>
+							<td><a href="https://www.drupal.org/project/search_api_attachments">Search API attachments</a></td>
+						</tr>
+						<tr>
+							<td><a href="https://www.drupal.org/project/search_api_db">Database search</a></td>
+							<td><a href="https://www.drupal.org/project/search_api_location">Search API Location</a></td>
+						</tr>
+						<tr>
+							<td><a href="https://www.drupal.org/project/elasticsearch_connector">Elasticsearch Connector</a></td>
+							<td><a href="https://www.drupal.org/project/search_api_sorts">Search API sorts</a></td>
+						</tr>
+						<tr>
+							<td><a href="https://www.drupal.org/project/search_api_algolia">Search API Algolia</a></td>
+							<td><a href="https://www.drupal.org/project/search_api_autocomplete">Autocomplete</a></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><a href="https://www.drupal.org/project/facets">Facets</a></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><a href="https://www.drupal.org/project/search_api_exclude_entity">Search API Exclude Entity</a></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><a href="https://www.drupal.org/project/search_api_page">Search pages</a></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><strike><a href="https://www.drupal.org/project/flag_search_api">Multi-index searches</a></strike></td>
+						</tr>
+					</table>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section PAGINA NO ELEMENTOS -->
+				<section class="page-search.no-elements">
+					<h3>Y si... ¿sólo tenemos este elemento?</h3>
+					<img src="assets/busqueda/apachesolr_module_page_clear.jpg" width="70%">
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section PAGINA NO ELEMENTOS -->
+				<section class="page-search.tapas-bar-example">
+					<h3>¿Qué resultados devolver y en qué orden?</h3>
+					<img src="assets/busqueda/tapas-bar-ejemplo-01.png">
 				</section>
 				<!-- @endsection -->
 
@@ -293,16 +356,9 @@
 				<!-- @endsection -->
 
 				<!-- @section EQUILIBRIO -->
-				<section class="search.balance" data-breadcrumb="La búsqueda > Equilibrio">
-					<h3>Devolver todos los documentos relevantes y nada más</h3>
-					<p><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section EQUILIBRIO -->
 				<section class="search.precision-example" data-breadcrumb="La búsqueda > Ejemplo de precision y recall">
-					<h5>"Precision & recall" en la búsqueda</h5>
-					<p class="small">Busca la letra "N"  ¿En qué filas sale y cuátas veces?</p>
+					<h4>Busca la letra "N"</h4>
+					<p class="xsmall">¿En qué filas sale y cuátas veces?</p>
 					<div style="font-size: 1.3em;">
 						<p style="font-size: 1em">A</p>
 						<p style="font-size: 0.9em">A E</p>
@@ -315,6 +371,13 @@
 						<p style="font-size: 0.2em">X D F H P T Z A N</p>
 						<p style="font-size: 0.1em">F A X T D N H U P Z</p>
 					</div>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section EQUILIBRIO -->
+				<section class="search.balance" data-breadcrumb="La búsqueda > Equilibrio">
+					<h3>Devolver todos los documentos relevantes y nada más</h3>
+					<p><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
 				</section>
 				<!-- @endsection -->
 
@@ -331,12 +394,6 @@
 						<dt>Options to tune document’s relevance in Solr</dt>
 						<dd class="small"><a href="https://lucidworks.com/2011/12/14/options-to-tune-documents-relevance-in-solr/">https://lucidworks.com/2011/12/14/options-to-tune-documents-relevance-in-solr/</a></dd>
 					</dl>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section MEDIUM EXAMPLE -->
-				<section class="search.example" data-breadcrumb="La búsqueda > Ejemplo">
-					<img src="assets/busqueda/search-medium-peter.png"  width="100%"/>
 				</section>
 				<!-- @endsection -->
 
@@ -357,29 +414,6 @@
 						</table>
 
 					</div>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section RELEVANCE -->
-				<section class="search.relevance" data-breadcrumb="La búsqueda > Relevancia">
-					<h3>Relevancia</h3>
-					<p class="xsmall"><em style="color: yellow;">boost</em></p>
-					<p>Añade relevancia a ciertos campos</p>
-					<dl class="fonts8">
-						<dt>Campos existentes en nodos</dt>
-						<dd>Ejemplo: Aumenta la relevancia si la palabra buscada está en el título del artículo</dd>
-						<dt>Campos no existentes (preprocesados)</dt>
-						<dd>Ejemplo: <em>Aumenta la relevancia si a los usuarios con los mismos gustos que los míos les ha gustado el artículo.</em> Este campo lo creamos (e indexamos) y le añadimos valores que podemos usar para dar relevancia</dd>
-					</dl>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section OTRAS OPCIONES -->
-				<section class="search.options-other" data-breadcrumb="La búsqueda > Otras opciones">
-					<p>Autcomplete</p>
-					<p>Autcomplete</p>
-					<p>Autcomplete</p>
-					<p>Autcomplete</p>
 				</section>
 				<!-- @endsection -->
 
