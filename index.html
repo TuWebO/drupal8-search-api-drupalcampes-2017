@@ -411,7 +411,8 @@
 				<!-- @section Herramientas Diagrama -->
 				<section class="search-api-solr-config.install">
 					<h3>Instalación</h3>
-					<p class="xsmall">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (<a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a>)</p>
+					<p class="xsmall">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (<a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a>) y los archivos de configuración añadidos al servidor Solr (/search_api_solr/solr-conf/
+						)</p>
 					<ol>
 						<li>Servidor / Backend / Connector</li>
 						<li>Índice / Servidor / Datasources</li>
@@ -528,6 +529,19 @@
 					<img src="assets/install/indexing-admin.png" width="100%">
 				</section>
 
+				<section class="search-api-solr-config.step-14">
+					<p class="xxsmall">Paso 14</p>
+					<h4>Añadimos vista</h4>
+					<img src="assets/install/add-view.png" width="100%">
+				</section>
+
+
+				<section class="search-api-solr-config.step-15">
+					<p class="xxsmall">Paso 15</p>
+					<h4>Configuramos vista</h4>
+					<p class="xxsmall">No cacheamos. Añadimos filtro expuesto de "Full text search" y seleccionamos los campos sobre los que queremos buscar. Ordenamos por relevancia DESC (podemos añadir después fecha DESC por ejemplo), configuramos permisos de acceso, filtramos por tipo de contenido y por estado del contenido (publicado o no).</p>
+					<img src="assets/install/views-admin-configuration.png" width="100%">
+				</section>
 
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="search-api-solr-config.solr-config">
