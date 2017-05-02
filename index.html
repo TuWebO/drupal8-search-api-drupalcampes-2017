@@ -82,7 +82,7 @@
 				<!-- @section BATTLE PLAN -->
 				<section class="history.battleplan">
 					<h3>Battleplan</h3>
-					<p class="small"><em>"Contrib Search maintainers are committed to make Drupal 8 kick ass with Search API."</em></p>
+					<p class="small left"><em>"Contrib Search maintainers are committed to make Drupal 8 kick ass with Search API."</em></p>
 					<table>
 						<tbody>
 						<tr>
@@ -377,7 +377,7 @@
 				<!-- @section EQUILIBRIO -->
 				<section class="search.balance">
 					<h3>Devolver todos los documentos relevantes y nada más</h3>
-					<p><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
+					<p class="left"><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
 				</section>
 				<!-- @endsection -->
 
@@ -404,6 +404,7 @@
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="chapter-start search-api-solr-config">
 					<h2>Configuración de Search API Solr</h2>
+					<img src="assets/install/config-index-init.png">
 				</section>
 				<!-- @endsection -->
 
@@ -411,7 +412,7 @@
 				<!-- @section Herramientas Diagrama -->
 				<section class="search-api-solr-config.install">
 					<h3>Instalación</h3>
-					<p class="xsmall">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (<a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a>) y los archivos de configuración añadidos al servidor Solr (/search_api_solr/solr-conf/
+					<p class="xsmall left">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (<a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a>) y los archivos de configuración añadidos al servidor Solr (/search_api_solr/solr-conf/
 						)</p>
 					<ol>
 						<li>Servidor / Backend / Connector</li>
@@ -476,6 +477,7 @@
 				<section class="search-api-solr-config.step-07">
 					<p class="xxsmall">Paso 7</p>
 					<h4>Guardar y añadir campos</h4>
+					<p class="xsmall left">Debemos tener en cuenta las implicaciones que tiene Indexar los "items" inmediatamente. Por un lado implica mayor seguridad ya que los resultados de las vistas no muestran elementos desactualizados, por otro puede ser una sobrecarga cuando hacemos operaciones de muchos elementos.</p>
 					<img src="assets/install/install-index-options.png">
 				</section>
 
@@ -501,15 +503,14 @@
 				<section class="search-api-solr-config.step-10">
 					<p class="xxsmall">Paso 10</p>
 					<h4>Campos añadidos</h4>
-					<p class="xxsmall">Seleccionamos un tipo y un boost.<br><em>@NOTE: Hemos indexado el campo títle del nodo dos veces, lo vamos a almacenar como tipos distintos (string y text)</em></p>
+					<p class="xsmall left">Seleccionamos un tipo y un boost.<br><em>@NOTE:</em> Hemos indexado el campo títle del nodo dos veces, lo vamos a almacenar como tipos distintos (string y text)</p>
 					<img src="assets/install/index-fields-added.png" width="80%">
-
 				</section>
 
 				<section class="search-api-solr-config.step-11">
 					<p class="xxsmall">Paso 11</p>
 					<h4>Comprobar - Módulo Devel</h4>
-					<p class="xsmall">Antes de nada, puedes activar el módulo <a href="https://www.drupal.org/project/devel">Devel</a> y comprobar cómo se van a mapear los campos que has añadido.<br><em>[TIPO][CARDINALIDAD]_[MACHINE_NAME]</em></p>
+					<p class="xsmall left">Antes de nada, puedes activar el módulo <a href="https://www.drupal.org/project/devel">Devel</a> y comprobar (en un nodo) cómo se van a mapear los campos que has añadido. Solr usa <em>"{PREFIX}s_*"</em> y <em>"{PREFIX}m_*"</em> en su nomenclatura (por ahora no te preocupes, indica tipo y cardinanlidad del campo).</p>
 					<img src="assets/install/devel-node-solr.png" width="60%">
 				</section>
 
@@ -517,15 +518,14 @@
 				<section class="search-api-solr-config.step-12">
 					<p class="xxsmall">Paso 12</p>
 					<h4>Configurar Procesadores</h4>
-					<p class="xsmall">Activar los menos posibles. Algunos pueden interferir con "procesadores" de Solr.</p>
-					<p class="xsmall">Por lo general los procesadores, añaden "propiedades" o alteran los valores de los campos (en distintas etapas del proceso)</p>
-					<img src="assets/install/index-processors.png" width="100%">
+					<p class="xsmall left">Es una de las herramientas más potentes, por ahora vamos a activar los menos posibles. Algunos pueden interferir con "procesadores" de Solr.<br>Por lo general los procesadores por defecto añaden "propiedades" a los "items" o alteran los valores de sus campos (en distintas etapas del proceso).</p>
+					<img src="assets/install/index-processors.png" width="60%">
 				</section>
 
 				<section class="search-api-solr-config.step-13">
 					<p class="xxsmall">Paso 13</p>
 					<h4>Indexamos</h4>
-					<p class="xsmall">Search API Solr incluye el módulo <em>search_api_solr_defaults</em>, donde parte de la configuración la tienes hecha, incluyendo una vista por defecto.</p>
+					<p class="xsmall left">Search API Solr incluye el módulo <em>search_api_solr_defaults</em>, donde parte de la configuración la tienes hecha, incluyendo una vista por defecto.</p>
 					<img src="assets/install/indexing-admin.png" width="100%">
 				</section>
 
@@ -539,7 +539,7 @@
 				<section class="search-api-solr-config.step-15">
 					<p class="xxsmall">Paso 15</p>
 					<h4>Configuramos vista</h4>
-					<p class="xxsmall">No cacheamos. Añadimos filtro expuesto de "Full text search" y lo configuramos para que no admita menos de dos caracteres y seleccionamos los campos sobre los que queremos buscar. Ordenamos por relevancia DESC (podemos añadir después fecha DESC por ejemplo), configuramos permisos de acceso, filtramos por tipo de contenido y por estado del contenido (publicado o no). Añadimos resumen de resultados en la cabecera y texto cuando no hay resultados.</p>
+					<p class="xxsmall left">No cacheamos. Añadimos filtro expuesto de "Full text search" y lo configuramos para que no admita menos de dos caracteres y seleccionamos los campos sobre los que queremos buscar. Ordenamos por relevancia DESC (podemos añadir después fecha DESC por ejemplo), configuramos permisos de acceso, filtramos por tipo de contenido y por estado del contenido (publicado o no). Añadimos resumen de resultados en la cabecera y texto cuando no hay resultados.</p>
 					<img src="assets/install/views-admin-configuration.png" width="100%">
 				</section>
 
@@ -548,6 +548,14 @@
 					<h4>Comprobamos</h4>
 					<p class="small">Yeahhh!!!!</p>
 					<img src="assets/install/view-platos-results-simple.png" width="100%">
+				</section>
+
+
+				<section class="search-api-solr-config.step-17">
+					<h4>Demo</h4>
+					<p class="small">#fail</p>
+					<p class="xsmall left">Con los procesadores (Paso 12) por defecto de Search API podemos solucionar este problema, pero vamos a configurar Solr para que lo haga él.</p>
+					<img src="assets/install/demo-fail.png" width="100%">
 				</section>
 
 				<!-- @section SEARCH API SOLR CONFIG-->
