@@ -356,6 +356,13 @@
 				<!-- @endsection -->
 
 				<!-- @section EQUILIBRIO -->
+				<section class="search.balance">
+					<h3>Devolver todos los documentos relevantes y nada más</h3>
+					<p class="left"><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section EQUILIBRIO -->
 				<section class="search.precision-example">
 					<h4>Busca la letra "N"</h4>
 					<p class="xsmall">¿En qué filas sale y cuátas veces?</p>
@@ -371,13 +378,6 @@
 						<p style="font-size: 0.2em">X D F H P T Z A N</p>
 						<p style="font-size: 0.1em">F A X T D N H U P Z</p>
 					</div>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section EQUILIBRIO -->
-				<section class="search.balance">
-					<h3>Devolver todos los documentos relevantes y nada más</h3>
-					<p class="left"><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
 				</section>
 				<!-- @endsection -->
 
@@ -404,7 +404,7 @@
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="chapter-start search-api-solr-config">
 					<h2>Configuración de Search API Solr</h2>
-
+					<img src="assets/install/config-index-init.png">
 				</section>
 				<!-- @endsection -->
 
@@ -412,7 +412,7 @@
 				<!-- @section Herramientas Diagrama -->
 				<section class="search-api-solr-config.install">
 					<h3>Instalación</h3>
-					<p class="xsmall left">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (<a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a>) y los archivos de configuración añadidos al servidor Solr (/search_api_solr/solr-conf/
+					<p class="xsmall left">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (usa <a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a> para instalarlo porque necesitamos Solarium) y los archivos de configuración añadidos al servidor Solr (/search_api_solr/solr-conf/
 						)</p>
 					<ol>
 						<li>Servidor / Backend / Connector</li>
@@ -477,7 +477,7 @@
 				<section class="search-api-solr-config.step-07">
 					<p class="xxsmall">Paso 7</p>
 					<h4>Guardar y añadir campos</h4>
-					<p class="xsmall left">Debemos tener en cuenta las implicaciones que tiene Indexar los "items" inmediatamente. Por un lado implica mayor seguridad ya que los resultados de las vistas no muestran elementos desactualizados, por otro puede ser una sobrecarga cuando hacemos operaciones de muchos elementos.</p>
+					<p class="xsmall left">Debemos tener en cuenta las implicaciones que tiene Indexar los "items" inmediatamente. Por un lado implica mayor seguridad ya que los resultados de las búsquedas no muestran elementos desactualizados, por otro puede ser una sobrecarga cuando hacemos operaciones de muchos elementos.</p>
 					<img src="assets/install/install-index-options.png">
 				</section>
 
@@ -490,20 +490,19 @@
 
 				<section class="search-api-solr-config.step-09">
 					<p class="xxsmall">Paso 9</p>
-					<h4>Tierra de nadie</h4>
-					<p class="xsmall">Resumiendo mucho...</p>
+					<h4>Muy resumido</h4>
 					<img src="assets/install/nodo-documento.png">
 					<div class="xsmall">
-						<p class="left">Estamos en un punto intermedio, vamos a añadir la información que queremos indexar</p>
-						<p class="left">Esta información viene en forma de propiedades, por ejemplo campos del nodo (Content) o campos añadidos por procesadores (General)</p>
-						<p class="left">Añadimos uno (o más) campos por cada propiedad</p>
+						<p class="left">Estamos en un punto intermedio, vamos a decir al índice la información que queremos indexar.</p>
+						<p class="left">Esta información viene definida por "propiedades" (property path) y agrupada por los Datasources seleccionados.</p>
+						<p class="left">Podemos añadir al índice uno (o más) campos por cada propiedad.</p>
 					</div>
 				</section>
 
 				<section class="search-api-solr-config.step-10">
 					<p class="xxsmall">Paso 10</p>
 					<h4>Campos añadidos</h4>
-					<p class="xsmall left">Seleccionamos un tipo y un boost.<br><em>@NOTE:</em> Hemos indexado el campo títle del nodo dos veces, lo vamos a almacenar como tipos distintos (string y text)</p>
+					<p class="xxsmall left">Seleccionamos tipo Fulltext si queremos poder buscar entre sus palabras y un boost si queremos darle más relevancia.<br><em>@NOTE:</em> Campo títle indexado dos veces (misma propiedad, dos campos a indexar).</p>
 					<img src="assets/install/index-fields-added.png" width="80%">
 				</section>
 
@@ -518,7 +517,7 @@
 				<section id="search-api-solr-config.step-12" class="search-api-solr-config.step-12">
 					<p class="xxsmall">Paso 12</p>
 					<h4>Configurar Procesadores</h4>
-					<p class="xsmall left">Es una de las herramientas más potentes, por ahora vamos a activar los menos posibles. Algunos pueden interferir con "procesadores" de Solr.<br>Por lo general los procesadores por defecto añaden "propiedades" a los "items" o alteran los valores de sus campos (en distintas etapas del proceso).</p>
+					<p class="xsmall left">Es una de las herramientas más potentes, por ahora vamos a activar los menos posibles. Algunos pueden interferir con "procesadores" de Solr.<br>Por lo general los procesadores añaden "propiedades" o alteran valores de campos (en distintas etapas del proceso).</p>
 					<img src="assets/install/index-processors.png" width="60%">
 				</section>
 
@@ -554,88 +553,17 @@
 				<section class="search-api-solr-config.step-17">
 					<h4>Demo</h4>
 					<p class="small">#fail</p>
-					<p class="xsmall left">Con los procesadores (<a href="#/search-api-solr-config.step-12">Paso 12</a>) por defecto de Search API podemos solucionar este problema, pero vamos a configurar Solr para que lo haga él.<br>Queremos eliminar los signos de interrogación y las palabras comunes como "Hay" o "con". Además queremos añadir "papas" como sinónimo de patatas.</p>
+					<p class="xxsmall left">Con los procesadores (<a href="#/search-api-solr-config.step-12">Paso 12</a>) por defecto de Search API podemos solucionar este problema, pero vamos a configurar Solr para que lo haga él.<br>Queremos eliminar los signos de interrogación y las palabras comunes como "Hay" o "con". Además queremos añadir "papas" como sinónimo de patatas.</p>
 					<img src="assets/install/demo-fail.png" width="90%">
 				</section>
 
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="chapter-start solr-config">
 					<h2>Configuración de Solr</h2>
+					<p class="xsmall">Todo el código es experimental, sólo con el propósito de dar un ejemplo. Sólo se está usando para estas diapositivas.</p>
 				</section>
 				<!-- @endsection -->
 
-				<section class="solr-config.intro">
-					<h3>Pasos</h3>
-					<ol class="small">
-						<li>Crear un nuevo tipo de campo en el esquema de Solr</li>
-						<li>Añadimos campos dinámicos para ese nuevo tipo</li>
-						<li>Dar de alta el campo en Drupal (para que lo reconozca)</li>
-						<li>Indexar el campo y ver si ofrece mejores resultados</li>
-					</ol>
-				</section>
-
-				<section class="solr-config.step-01">
-					<p class="xxsmall">Paso 1</p>
-					<h4>Nuevo tipo de campo en solr</h4>
-					<p class="xsmall">schema_extra_types.xml</p>
-					<pre><code class="xxsmall" data-trim data-noescape>
-&lt;fieldType name=&quot;text_tapas_bar&quot; class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot;&gt;
-    &lt;analyzer type=&quot;index&quot;&gt;
-        &lt;charFilter class=&quot;solr.MappingCharFilterFactory&quot; <mark>mapping=&quot;mapping-ISOLatin1Accent.txt&quot;</mark>/&gt;
-        &lt;tokenizer class=&quot;solr.WhitespaceTokenizerFactory&quot;/&gt;
-        &lt;filter class=&quot;solr.SynonymFilterFactory&quot; <mark>synonyms=&quot;lang/synonyms_es.txt&quot;</mark> ignoreCase=&quot;true&quot; expand=&quot;true&quot;/&gt;
-        &lt;filter class=&quot;solr.StopFilterFactory&quot; <mark>words=&quot;lang/stopwords_tildes_added_es.txt&quot; format=&quot;snowball&quot;</mark> ignoreCase=&quot;true&quot;/&gt;
-        &lt;filter class=&quot;solr.WordDelimiterFilterFactory&quot; generateWordParts=&quot;1&quot; generateNumberParts=&quot;1&quot; splitOnCaseChange=&quot;1&quot; splitOnNumerics=&quot;1&quot; catenateWords=&quot;1&quot; catenateNumbers=&quot;1&quot; catenateAll=&quot;0&quot; protected=&quot;protwords.txt&quot; preserveOriginal=&quot;1&quot;/&gt;
-        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
-        <mark>&lt;filter class=&quot;solr.SpanishLightStemFilterFactory&quot;/&gt;</mark>
-        &lt;filter class=&quot;solr.RemoveDuplicatesTokenFilterFactory&quot;/&gt;
-    &lt;/analyzer&gt;
-    &lt;analyzer type=&quot;query&quot;&gt;
-        &lt;charFilter class=&quot;solr.MappingCharFilterFactory&quot; <mark>mapping=&quot;mapping-ISOLatin1Accent.txt&quot;</mark>/&gt;
-        &lt;tokenizer class=&quot;solr.WhitespaceTokenizerFactory&quot;/&gt;
-        &lt;!-- Read https://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.SynonymFilterFactory --&gt;
-        &lt;!-- &lt;filter class=&quot;solr.SynonymFilterFactory&quot; <mark>synonyms=&quot;lang/synonyms_es.txt&quot;</mark> ignoreCase=&quot;true&quot; expand=&quot;true&quot;/&gt; --&gt;
-        &lt;filter class=&quot;solr.StopFilterFactory&quot; <mark>words=&quot;lang/stopwords_tildes_added_es.txt&quot; format=&quot;snowball&quot;</mark> ignoreCase=&quot;true&quot;/&gt;
-        &lt;filter class=&quot;solr.WordDelimiterFilterFactory&quot; generateWordParts=&quot;1&quot; generateNumberParts=&quot;1&quot; splitOnCaseChange=&quot;1&quot; splitOnNumerics=&quot;1&quot; catenateWords=&quot;0&quot; catenateNumbers=&quot;0&quot; catenateAll=&quot;0&quot; protected=&quot;protwords.txt&quot; preserveOriginal=&quot;1&quot;/&gt;
-        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
-        <mark>&lt;filter class=&quot;solr.SpanishLightStemFilterFactory&quot;/&gt;</mark>
-        &lt;filter class=&quot;solr.RemoveDuplicatesTokenFilterFactory&quot;/&gt;
-    &lt;/analyzer&gt;
-&lt;/fieldType&gt;
-						</code></pre>
-				</section>
-
-				<section class="solr-config.step-02">
-					<p class="xxsmall">Paso 2</p>
-					<h4>Crear campos dinámicos asociados a ese tipo </h4>
-					<p class="xsmall">schema_extra_fields.xml</p>
-					<pre><code class="xxsmall" data-trim data-noescape>
-&lt;dynamicField name=&quot;tbars_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;false&quot; termVectors=&quot;true&quot;/&gt;
-&lt;dynamicField name=&quot;tbarm_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;true&quot; termVectors=&quot;true&quot;/&gt;
-					</code></pre>
-					<p>Estos campos dinámicos van a ser reconocidos por Search API Solr</p>
-				</section>
-
-
-				<section class="solr-config.step-03">
-					<p class="xxsmall">Paso 3</p>
-					<h4>Damos de alta el campo en Drupal, usando un plugin de search_api</h4>
-					<pre><code class="xxsmall" data-trim data-noescape>
-namespace Drupal\tapas_bar_solr\Plugin\search_api\data_type;
-use Drupal\search_api\DataType\DataTypePluginBase;
-/**
- *
- * @SearchApiDataType(
- *   id = &quot;text_tapas_bar&quot;,
- *   label = @Translation(&quot;FullText Tapas Bar&quot;),
- *   description = @Translation(&quot;A text field which takes in account Spanish tapas bar language&quot;),
- *   fallback_type = &quot;text&quot;,
- *   prefix = &quot;tbar&quot;,
- * )
- */
-class TapasBarDataType extends DataTypePluginBase {
-}</code></pre>
-				</section>
 
 				<section class="solr-config.admin-files">
 					<h3>Vista de archivos</h3>
@@ -672,15 +600,219 @@ class TapasBarDataType extends DataTypePluginBase {
 				</section>
 				<!-- @endsection -->
 
+				<section class="solr-config.intro">
+					<h3>Pasos</h3>
+					<ol class="small">
+						<li>Crear un nuevo tipo de campo en el esquema de Solr</li>
+						<li>Añadir sinónimos y stopwords, para que nuestro campo los use a la hora de analizar</li>
+						<li>Ver cómo se comporta el campo (por interfaz de Solr)</li>
+						<li>Dar de alta el campo en Drupal (para que lo reconozca)</li>
+					</ol>
+				</section>
+
+				<section class="solr-config.step-01">
+					<p class="xxsmall">Paso 1</p>
+					<h4>Nuevo tipo de campo en solr</h4>
+					<p class="xsmall">schema_extra_types.xml</p>
+					<p class="xxsmall left">Los textos resaltados con extentisón ".txt" son los que puedes "Tunear", sólo tienes que decirle a tu campo dónde están.</p>
+					<p class="xxsmall left">Cada filter y tokenizer que ves, es parecido a los procesadores de Search API, por eso no debemos activar muchos procesadores en Drupal, Solr ya procesa el texto de la forma que queramos nosotros.</p>
+					<pre><code class="xxsmall" data-trim data-noescape>
+&lt;fieldType name=&quot;text_tapas_bar&quot; class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot;&gt;
+    &lt;analyzer type=&quot;index&quot;&gt;
+        &lt;charFilter class=&quot;solr.MappingCharFilterFactory&quot; <mark>mapping=&quot;mapping-ISOLatin1Accent.txt&quot;</mark>/&gt;
+        &lt;tokenizer class=&quot;solr.WhitespaceTokenizerFactory&quot;/&gt;
+        &lt;filter class=&quot;solr.SynonymFilterFactory&quot; <mark>synonyms=&quot;lang/synonyms_es.txt&quot;</mark> ignoreCase=&quot;true&quot; expand=&quot;true&quot;/&gt;
+        &lt;filter class=&quot;solr.StopFilterFactory&quot; <mark>words=&quot;lang/stopwords_tildes_added_es.txt&quot; format=&quot;snowball&quot;</mark> ignoreCase=&quot;true&quot;/&gt;
+        &lt;filter class=&quot;solr.WordDelimiterFilterFactory&quot; generateWordParts=&quot;1&quot; generateNumberParts=&quot;1&quot; splitOnCaseChange=&quot;1&quot; splitOnNumerics=&quot;1&quot; catenateWords=&quot;1&quot; catenateNumbers=&quot;1&quot; catenateAll=&quot;0&quot; protected=&quot;protwords.txt&quot; preserveOriginal=&quot;1&quot;/&gt;
+        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
+        <mark>&lt;filter class=&quot;solr.SpanishLightStemFilterFactory&quot;/&gt;</mark>
+        &lt;filter class=&quot;solr.RemoveDuplicatesTokenFilterFactory&quot;/&gt;
+    &lt;/analyzer&gt;
+    &lt;/analyzer&gt;
+    &lt;analyzer type=&quot;query&quot;&gt;
+        &lt;charFilter class=&quot;solr.MappingCharFilterFactory&quot; <mark>mapping=&quot;mapping-ISOLatin1Accent.txt&quot;</mark>/&gt;
+        &lt;tokenizer class=&quot;solr.WhitespaceTokenizerFactory&quot;/&gt;
+        &lt;!-- Read https://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.SynonymFilterFactory --&gt;
+        &lt;!-- &lt;filter class=&quot;solr.SynonymFilterFactory&quot; <mark>synonyms=&quot;lang/synonyms_es.txt&quot;</mark> ignoreCase=&quot;true&quot; expand=&quot;true&quot;/&gt; --&gt;
+        &lt;filter class=&quot;solr.StopFilterFactory&quot; <mark>words=&quot;lang/stopwords_tildes_added_es.txt&quot; format=&quot;snowball&quot;</mark> ignoreCase=&quot;true&quot;/&gt;
+        &lt;filter class=&quot;solr.WordDelimiterFilterFactory&quot; generateWordParts=&quot;1&quot; generateNumberParts=&quot;1&quot; splitOnCaseChange=&quot;1&quot; splitOnNumerics=&quot;1&quot; catenateWords=&quot;0&quot; catenateNumbers=&quot;0&quot; catenateAll=&quot;0&quot; protected=&quot;protwords.txt&quot; preserveOriginal=&quot;1&quot;/&gt;
+        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
+        <mark>&lt;filter class=&quot;solr.SpanishLightStemFilterFactory&quot;/&gt;</mark>
+        &lt;filter class=&quot;solr.RemoveDuplicatesTokenFilterFactory&quot;/&gt;
+    &lt;/analyzer&gt;
+&lt;/fieldType&gt;
+						</code></pre>
+				</section>
+
+				<section class="solr-config.step-02">
+					<p class="xxsmall">Paso 2</p>
+					<h4>Crear campos dinámicos asociados a ese tipo</h4>
+					<p class="xsmall">schema_extra_fields.xml</p>
+					<pre><code class="xxsmall" data-trim data-noescape>
+&lt;dynamicField name=&quot;tbars_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;false&quot; termVectors=&quot;true&quot;/&gt;
+&lt;dynamicField name=&quot;tbarm_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;true&quot; termVectors=&quot;true&quot;/&gt;
+					</code></pre>
+					<p class="xsmall left">Estos campos dinámicos van a ser reconocidos por Search API Solr, siempre y cuando tengan la nomenclatura adecuada como vimos antes.</p>
+				</section>
+
+				<section class="solr-config.step-03">
+					<p class="xxsmall">Paso 3</p>
+					<h4>Recargamos el core y comprobamos si aparece nuestro campo</h4>
+					<p class="xxsmall featured">:8983/solr/#/tapas_bar/schema</p>
+					<img src="assets/install/solr-admin-schema.png" width="70%">
+				</section>
+
+
+				<section class="solr-config.step-04">
+					<p class="xxsmall">Paso 4</p>
+					<h4>Pequeño análisis de nuestro campo</h4>
+					<p class="xsmall">Puedes comprobar directamente en Solr cómo se va a indexar y a buscar tu campo.<br>¡Es muy útil!</p>
+					<img src="assets/install/solr-admin-analysis.png" width="80%">
+					<img src="assets/install/solr-admin-analysis-02.png" width="50%">
+				</section>
+
 				<!-- @section DEMO-->
 				<section class="search-api-solr-config.demo">
 					<h3>Demo</h3>
+					<p>¡Ahora si!</p>
+					<img src="assets/install/demo-ok.png">
 				</section>
 				<!-- @endsection -->
 
+
+				<!-- @section DEMO-->
+				<section class="search-api-solr-config.demo">
+					<h3>Implementación en Drupal</h3>
+					<p class="xsmall">La hacemos a través de plugins</p>
+					<div class="left">
+					<p>Crear backend de Solr que reconozca nuestro tipo</p>
+					<p>Crear un plugin data_type para que Drupal pueda operar con él</p>
+					<p>Extra: Ejemplo de plugin que crea un campo (propiedad) para indexar</p>
+					</div>
+				</section>
+				<!-- @endsection -->
+
+
+				<!-- @section DEMO-->
+				<section class="search-api-solr-config.backend">
+					<h4>Backend</h4>
+					<p class="small left">Probablemente esto no es lo que quieras hacer en producción, pero como ejemplo vale para ver los elementos implicados</p>
+					<pre><code class="xxsmall" data-trim data-noescape>
+namespace Drupal\tapas_bar_solr\Plugin\search_api\backend;
+use Drupal\search_api_solr\Plugin\search_api\backend\SearchApiSolrBackend;
+/**
+* Experimental Apache Solr backend for search api.
+*
+* @SearchApiBackend(
+*   id = "tapas_bar_solr_backend",
+*   label = @Translation("Experimental Tapas Bar Solr backend"),
+*   description = @Translation("Index items using a Custom Solr backend.")
+* )
+*/
+class TapasBarSolrServer extends SearchApiSolrBackend {
+function supportsDataType($type) {
+return parent::supportsDataType($type) | $type == 'text_tapas_bar';
+  }
+}
+</code></pre>
+				</section>
+				<!-- @endsection -->
+
+				<section class="solr-config.datatype">
+					<h4>Damos de alta el "data type" en Drupal</h4>
+					<pre><code class="xxsmall" data-trim data-noescape>
+namespace Drupal\tapas_bar_solr\Plugin\search_api\data_type;
+use Drupal\search_api\DataType\DataTypePluginBase;
+/**
+ *
+ * @SearchApiDataType(
+ *   id = &quot;text_tapas_bar&quot;,
+ *   label = @Translation(&quot;FullText Tapas Bar&quot;),
+ *   description = @Translation(&quot;A text field which takes in account Spanish tapas bar language&quot;),
+ *   fallback_type = &quot;text&quot;,
+ *   prefix = &quot;tbar&quot;,
+ * )
+ */
+class TapasBarDataType extends DataTypePluginBase {
+}</code></pre>
+				</section>
+
+				<section class="solr-config.check">
+					<h4>Comprobamos que es reconocido</h4>
+					<img src="assets/install/index-tbar-fulltext-field.png"><br>
+					<img src="assets/install/index-tbar-fulltext-datatype.png" width="100%">
+				</section>
+
+
+				<section class="solr-config.plugin-add-field">
+					<h4>Plugin que añade un campo booleano, que puede ser indexado y reconocido por views</h4>
+					<p class="xxsmall">Existen funciones para comprobar si el índice es soportado... no están incluidas.</p>
+					<pre><code class="xxsmall" data-trim data-noescape>namespace Drupal\tapas_bar_solr\Plugin\search_api\processor;
+
+use Drupal\search_api\Datasource\DatasourceInterface;
+use Drupal\search_api\Item\ItemInterface;
+use Drupal\search_api\Processor\ProcessorPluginBase;
+use Drupal\search_api\Processor\ProcessorProperty;
+
+/**
+ * Adds an experimental property to index.
+ *
+ * hidden = true | Won't show on Processors Tab
+ * locked = true | If it shows, it will be "disabled"
+ *
+ * @SearchApiProcessor(
+ *   id = "tapas_add_discount",
+ *   label = @Translation("Adds experimental boolean field"),
+ *   description = @Translation("Adds experimental boolean field as if it were a discount (tapas bar)."),
+ *   stages = {
+ *     "add_properties" = 0,
+ *   },
+ *   locked = true,
+ *   hidden = false,
+ * )
+ */
+class AddTapasDiscount extends ProcessorPluginBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getPropertyDefinitions(DatasourceInterface $datasource = NULL) {
+    $properties = [];
+
+    if (!$datasource) {
+      $definition = [
+        'label' => $this->t('Tapas Bar - Add discount fields'),
+        'description' => $this->t('Adds a discount boolean field'),
+        'type' => 'boolean',
+        'processor_id' => $this->getPluginId(),
+      ];
+      $properties['tapas_discount_field'] = new ProcessorProperty($definition);
+    }
+
+    return $properties;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function addFieldValues(ItemInterface $item) {
+    $fields = $this->getFieldsHelper()
+      ->filterForPropertyPath($item->getFields(), NULL, 'tapas_discount_field');
+    foreach ($fields as $field) {
+      if (!$field->getDatasourceId()) {
+        // Let's map it with an integer and see how it behaves...
+        $field->addValue(rand(0,1) == 1);
+      }
+    }
+  }}</code></pre>
+
+				</section>
+
 				<!-- @section DOCUMENTACIÓN -->
-				<section class="chapter-start docs">
-					<h2>Documentación</h2>
+				<section class="solr-config.check-proccesor">
+					<h4>Comprobamos</h4>
+          <img src="assets/install/processor-custom-01.png" width="60%">
+          <img src="assets/install/processor-custom-02.png" width="60%">
 				</section>
 				<!-- @endsection -->
 
