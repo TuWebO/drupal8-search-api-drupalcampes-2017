@@ -45,7 +45,7 @@
 					</div>
 
 					<div class="drupalcamp-label-blue left xsmall inline-block" style="float:right">
-						#drupalcamp2017
+						#DrupalCampEs
 					</div>
 
 				</section>
@@ -404,7 +404,7 @@
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="chapter-start search-api-solr-config">
 					<h2>Configuración de Search API Solr</h2>
-					<img src="assets/install/config-index-init.png">
+
 				</section>
 				<!-- @endsection -->
 
@@ -515,7 +515,7 @@
 				</section>
 
 
-				<section class="search-api-solr-config.step-12">
+				<section id="search-api-solr-config.step-12" class="search-api-solr-config.step-12">
 					<p class="xxsmall">Paso 12</p>
 					<h4>Configurar Procesadores</h4>
 					<p class="xsmall left">Es una de las herramientas más potentes, por ahora vamos a activar los menos posibles. Algunos pueden interferir con "procesadores" de Solr.<br>Por lo general los procesadores por defecto añaden "propiedades" a los "items" o alteran los valores de sus campos (en distintas etapas del proceso).</p>
@@ -554,27 +554,98 @@
 				<section class="search-api-solr-config.step-17">
 					<h4>Demo</h4>
 					<p class="small">#fail</p>
-					<p class="xsmall left">Con los procesadores (Paso 12) por defecto de Search API podemos solucionar este problema, pero vamos a configurar Solr para que lo haga él.</p>
-					<img src="assets/install/demo-fail.png" width="100%">
+					<p class="xsmall left">Con los procesadores (<a href="#/search-api-solr-config.step-12">Paso 12</a>) por defecto de Search API podemos solucionar este problema, pero vamos a configurar Solr para que lo haga él.<br>Queremos eliminar los signos de interrogación y las palabras comunes como "Hay" o "con". Además queremos añadir "papas" como sinónimo de patatas.</p>
+					<img src="assets/install/demo-fail.png" width="90%">
 				</section>
 
 				<!-- @section SEARCH API SOLR CONFIG-->
-				<section class="search-api-solr-config.solr-config">
+				<section class="chapter-start solr-config">
 					<h2>Configuración de Solr</h2>
 				</section>
 				<!-- @endsection -->
 
+				<section class="solr-config.intro">
+					<h3>Pasos</h3>
+					<ol class="small">
+						<li>Crear un nuevo tipo de campo en el esquema de Solr</li>
+						<li>Añadimos campos dinámicos para ese nuevo tipo</li>
+						<li>Dar de alta el campo en Drupal (para que lo reconozca)</li>
+						<li>Indexar el campo y ver si ofrece mejores resultados</li>
+					</ol>
+				</section>
 
-				<!-- @section Herramientas Tunning -->
-				<section class="search-api-solr-config.tuning">
-					<h3>Tuneando Solr</h3>
-					<div class="xsmall">
+				<section class="solr-config.step-01">
+					<p class="xxsmall">Paso 1</p>
+					<h4>Nuevo tipo de campo en solr</h4>
+					<p class="xsmall">schema_extra_types.xml</p>
+					<pre><code class="xxsmall" data-trim data-noescape>
+&lt;fieldType name=&quot;text_tapas_bar&quot; class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot;&gt;
+    &lt;analyzer type=&quot;index&quot;&gt;
+        &lt;charFilter class=&quot;solr.MappingCharFilterFactory&quot; <mark>mapping=&quot;mapping-ISOLatin1Accent.txt&quot;</mark>/&gt;
+        &lt;tokenizer class=&quot;solr.WhitespaceTokenizerFactory&quot;/&gt;
+        &lt;filter class=&quot;solr.SynonymFilterFactory&quot; <mark>synonyms=&quot;lang/synonyms_es.txt&quot;</mark> ignoreCase=&quot;true&quot; expand=&quot;true&quot;/&gt;
+        &lt;filter class=&quot;solr.StopFilterFactory&quot; <mark>words=&quot;lang/stopwords_tildes_added_es.txt&quot; format=&quot;snowball&quot;</mark> ignoreCase=&quot;true&quot;/&gt;
+        &lt;filter class=&quot;solr.WordDelimiterFilterFactory&quot; generateWordParts=&quot;1&quot; generateNumberParts=&quot;1&quot; splitOnCaseChange=&quot;1&quot; splitOnNumerics=&quot;1&quot; catenateWords=&quot;1&quot; catenateNumbers=&quot;1&quot; catenateAll=&quot;0&quot; protected=&quot;protwords.txt&quot; preserveOriginal=&quot;1&quot;/&gt;
+        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
+        <mark>&lt;filter class=&quot;solr.SpanishLightStemFilterFactory&quot;/&gt;</mark>
+        &lt;filter class=&quot;solr.RemoveDuplicatesTokenFilterFactory&quot;/&gt;
+    &lt;/analyzer&gt;
+    &lt;analyzer type=&quot;query&quot;&gt;
+        &lt;charFilter class=&quot;solr.MappingCharFilterFactory&quot; <mark>mapping=&quot;mapping-ISOLatin1Accent.txt&quot;</mark>/&gt;
+        &lt;tokenizer class=&quot;solr.WhitespaceTokenizerFactory&quot;/&gt;
+        &lt;!-- Read https://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.SynonymFilterFactory --&gt;
+        &lt;!-- &lt;filter class=&quot;solr.SynonymFilterFactory&quot; <mark>synonyms=&quot;lang/synonyms_es.txt&quot;</mark> ignoreCase=&quot;true&quot; expand=&quot;true&quot;/&gt; --&gt;
+        &lt;filter class=&quot;solr.StopFilterFactory&quot; <mark>words=&quot;lang/stopwords_tildes_added_es.txt&quot; format=&quot;snowball&quot;</mark> ignoreCase=&quot;true&quot;/&gt;
+        &lt;filter class=&quot;solr.WordDelimiterFilterFactory&quot; generateWordParts=&quot;1&quot; generateNumberParts=&quot;1&quot; splitOnCaseChange=&quot;1&quot; splitOnNumerics=&quot;1&quot; catenateWords=&quot;0&quot; catenateNumbers=&quot;0&quot; catenateAll=&quot;0&quot; protected=&quot;protwords.txt&quot; preserveOriginal=&quot;1&quot;/&gt;
+        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
+        <mark>&lt;filter class=&quot;solr.SpanishLightStemFilterFactory&quot;/&gt;</mark>
+        &lt;filter class=&quot;solr.RemoveDuplicatesTokenFilterFactory&quot;/&gt;
+    &lt;/analyzer&gt;
+&lt;/fieldType&gt;
+						</code></pre>
+				</section>
+
+				<section class="solr-config.step-02">
+					<p class="xxsmall">Paso 2</p>
+					<h4>Crear campos dinámicos asociados a ese tipo </h4>
+					<p class="xsmall">schema_extra_fields.xml</p>
+					<pre><code class="xxsmall" data-trim data-noescape>
+&lt;dynamicField name=&quot;tbars_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;false&quot; termVectors=&quot;true&quot;/&gt;
+&lt;dynamicField name=&quot;tbarm_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;true&quot; termVectors=&quot;true&quot;/&gt;
+					</code></pre>
+					<p>Estos campos dinámicos van a ser reconocidos por Search API Solr</p>
+				</section>
+
+
+				<section class="solr-config.step-03">
+					<p class="xxsmall">Paso 3</p>
+					<h4>Damos de alta el campo en Drupal, usando un plugin de search_api</h4>
+					<pre><code class="xxsmall" data-trim data-noescape>
+namespace Drupal\tapas_bar_solr\Plugin\search_api\data_type;
+use Drupal\search_api\DataType\DataTypePluginBase;
+/**
+ *
+ * @SearchApiDataType(
+ *   id = &quot;text_tapas_bar&quot;,
+ *   label = @Translation(&quot;FullText Tapas Bar&quot;),
+ *   description = @Translation(&quot;A text field which takes in account Spanish tapas bar language&quot;),
+ *   fallback_type = &quot;text&quot;,
+ *   prefix = &quot;tbar&quot;,
+ * )
+ */
+class TapasBarDataType extends DataTypePluginBase {
+}</code></pre>
+				</section>
+
+				<section class="solr-config.admin-files">
+					<h3>Vista de archivos</h3>
+					<div class="xxsmall">
 						<p><em>:8983/solr/#/my_core/files</em></p>
 						<table>
 							<tbody>
 							<tr>
 								<td>
-									<img src="assets/tools/solr-ui-admin-files.png" class="hide-pdf" width="100%" />
+									<img src="assets/tools/solr-ui-admin-files.png" width="100%" />
 								</td>
 								<td>
 									<dl class="fonts8">
@@ -583,7 +654,9 @@
 										<dt>Copia los archivos de configuración</dt>
 										<dd>search_api_solr/solr-conf/VERSION_NUMBER.x</dd>
 										<dt>stopwords_es.txt</dt>
-										<dd>Añade stopwords (con y sin tilde)</dd>
+										<dd>Añade stopwords</dd>
+										<dt>synonyms_es.xml</dt>
+										<dd>Añade sinónimos</dd>
 										<dt>mapping-ISOLatin1Accent.txt</dt>
 										<dd>Añade las entradas correspondientes</dd>
 										<dt>schema_extra_types.xml</dt>
@@ -605,12 +678,6 @@
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section Objetivo demo -->
-				<section class="chapter-start example">
-					<h2>Ejemplo</h2>
-				</section>
-				<!-- @endsection -->
-
 				<!-- @section DOCUMENTACIÓN -->
 				<section class="chapter-start docs">
 					<h2>Documentación</h2>
@@ -618,21 +685,9 @@
 				<!-- @endsection -->
 
 				<!-- @section Cheat sheet Drupal -->
-				<section class="docs.pitfails.drupal" data-breadcrumb="Docs > Common pitfails">
-					<h2>Fallos frecuentes</h2>
-					<dl class="xsmall">
-						<dt>No planificar la búsqueda</dt>
-						<dd>Recoge toda la información que puedas sobre hábitos de búsqueda</dd>
-						<dd>Ten en cuenta el contexto. Ej. papas en una página de comida puede ser sinónimo de patatas, mientras que en una de maternidad podría no tener sentido</dd>
-						<dd>Es mejor comenzar con pocos datos a indexar</dd>
-					</dl>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section Cheat sheet Drupal -->
 				<section class="docs.cheatsheet.drupal" data-breadcrumb="Docs > Cheat sheet > Drupal">
-					<h2>Drupal - Cheat sheet</h2>
-					<dl class="xsmall">
+					<h4>Drupal - Referencias</h4>
+					<dl class="xxsmall">
 						<dt>Converting a SearchAPI query into a Solr query</dt>
 						<dd>SearchApiSolrBackend::search(QueryInterface $query)</dd>
 						<dt>alterSearchApiQuery</dt>
@@ -650,8 +705,8 @@
 
 				<!-- @section Cheat sheet Solr -->
 				<section class="docs.cheatsheet.solr" data-breadcrumb="Docs > Cheat sheet > Solr">
-					<h3>Solr - Cheat sheet</h3>
-					<dl class="xsmall">
+					<h4>Solr - Referencias</h4>
+					<dl class="xxsmall">
 						<dt>Apache Solr Reference Guide</dt>
 						<dd><a href="https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide">https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide</a></dd>
 						<dt>Solr resources</dt>
@@ -677,8 +732,8 @@
 
 				<!-- @section Cheat sheet Solr -->
 				<section class="docs.references" data-breadcrumb="Docs > Referencias">
-					<h2>Referencias</h2>
-					<dl class="xsmall">
+					<h4>Otras Referencias</h4>
+					<dl class="xxsmall">
 						<dt>Búsquedas "Full Text"</dt>
 						<dd><a href="https://en.wikipedia.org/wiki/Full-text_search">https://en.wikipedia.org/wiki/Full-text_search</a></dd>
 						<dd><a href="http://stackoverflow.com/questions/224714/what-is-full-text-search-vs-like">http://stackoverflow.com/questions/224714/what-is-full-text-search-vs-like</a></dd>
