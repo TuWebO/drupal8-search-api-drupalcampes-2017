@@ -194,7 +194,7 @@
 								<ul>
 									<li>Search API como módulo principal</li>
 									<li>Search API Solr</li>
-									<li>Integrar los demás módulos sin perder funcionlidad</li>
+									<li>Integrar los demás módulos mejorando funcionlidad</li>
 								</ul>
 							</td>
 						</tr>
@@ -495,7 +495,7 @@
 					<div class="xsmall">
 						<p class="left">Estamos en un punto intermedio, vamos a decir al índice la información que queremos indexar.</p>
 						<p class="left">Esta información viene definida por "propiedades" (property path) y agrupada por los Datasources seleccionados.</p>
-						<p class="left">Podemos añadir al índice uno (o más) campos por cada propiedad.</p>
+						<p class="left">Podemos añadir al índice uno o más campos por cada propiedad.</p>
 					</div>
 				</section>
 
@@ -568,11 +568,10 @@
 				<section class="solr-config.admin-files">
 					<h3>Vista de archivos</h3>
 					<div class="xxsmall">
-						<p><em>:8983/solr/#/my_core/files</em></p>
+						<p class="featured"><em>:8983/solr/#/my_core/files</em></p>
 						<table>
-							<tbody>
 							<tr>
-								<td>
+								<td style="vertical-align: top">
 									<img src="assets/tools/solr-ui-admin-files.png" width="100%" />
 								</td>
 								<td>
@@ -594,7 +593,6 @@
 									</dl>
 								</td>
 							</tr>
-							</tbody>
 						</table>
 					</div>
 				</section>
@@ -606,7 +604,7 @@
 						<li>Crear un nuevo tipo de campo en el esquema de Solr</li>
 						<li>Añadir sinónimos y stopwords, para que nuestro campo los use a la hora de analizar</li>
 						<li>Ver cómo se comporta el campo (por interfaz de Solr)</li>
-						<li>Dar de alta el campo en Drupal (para que lo reconozca)</li>
+						<li>Dar de alta el campo en Drupal mediante plugins para que lo reconozca</li>
 					</ol>
 				</section>
 
@@ -666,6 +664,7 @@
 				<section class="solr-config.step-04">
 					<p class="xxsmall">Paso 4</p>
 					<h4>Pequeño análisis de nuestro campo</h4>
+          <p class="xxsmall featured">:8983/solr/#/tapas_bar/analysis</p>
 					<p class="xsmall">Puedes comprobar directamente en Solr cómo se va a indexar y a buscar tu campo.<br>¡Es muy útil!</p>
 					<img src="assets/install/solr-admin-analysis.png" width="80%">
 					<img src="assets/install/solr-admin-analysis-02.png" width="50%">
@@ -685,9 +684,9 @@
 					<h3>Implementación en Drupal</h3>
 					<p class="xsmall">La hacemos a través de plugins</p>
 					<div class="left">
-					<p>Crear backend de Solr que reconozca nuestro tipo</p>
-					<p>Crear un plugin data_type para que Drupal pueda operar con él</p>
-					<p>Extra: Ejemplo de plugin que crea un campo (propiedad) para indexar</p>
+					<p>Crear backend plugin de Solr que reconozca nuestro tipo.</p>
+					<p>Crear un plugin data_type para que Drupal pueda operar con él.</p>
+					<p>Extra: Ejemplo de processor plugin que crea un campo (propiedad) para indexar.</p>
 					</div>
 				</section>
 				<!-- @endsection -->
@@ -875,7 +874,11 @@ class AddTapasDiscount extends ProcessorPluginBase {
 
 				<section>
 					<h2>¡Muchas gracias!</h2>
-					<p class="xsmall"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p>
+          <p>¡A todos los voluntarios!</p>
+          <p>¡A la Organización!</p>
+          <p>¡A la Asociación Española de Drupal!</p>
+          <p>¡A todos vosotros!</p>
+					<p class="xsmall featured"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p>
 				</section>
 
 
