@@ -151,19 +151,8 @@
 				<section class="history.contribute">
 					<h3>¡Contribuye!</h3>
 					<p>Empieza por la Documentación</p>
-					<table class="xsmall">
-						<tbody>
-						<tr>
-							<td style="vertical-align: top"><a href="https://www.drupal.org/docs/7/modules/search-api">
-								https://www.drupal.org/docs/7/modules/search-api
-							</a><img src="assets/history/drupal7-search-api-documentation.png"  width="100%"/></td>
-							<td style="vertical-align: top"><a href="https://www.drupal.org/docs/8/modules/search-api">
-								https://www.drupal.org/docs/8/modules/search-api
-							</a><img src="assets/history/drupal8-search-api-documentation.png"  width="100%"/>
-							</td>
-						</tr>
-						</tbody>
-					</table>
+							<a href="https://www.drupal.org/docs/7/modules/search-api">https://www.drupal.org/docs/7/modules/search-api</a>
+							<a href="https://www.drupal.org/docs/8/modules/search-api">https://www.drupal.org/docs/8/modules/search-api</a>
 				</section>
 				<!-- @endsection -->
 
@@ -232,14 +221,14 @@
 				<!-- @section PAGINA NO ELEMENTOS -->
 				<section class="page-search.no-elements">
 					<h3>Y si... ¿sólo tenemos este elemento?</h3>
-					<img src="assets/busqueda/apachesolr_module_page_clear.jpg" width="70%">
+					<img src="assets/busqueda/search-box.png" width="100%">
 				</section>
 				<!-- @endsection -->
 
 				<!-- @section PAGINA NO ELEMENTOS -->
 				<section class="page-search.tapas-bar-example">
 					<h3>¿Qué almacenamos y cómo para ofrecer buenos resutlados?</h3>
-					<img src="assets/busqueda/tapas-bar-ejemplo-01.png">
+					<img src="assets/busqueda/search-platos-example.png">
 				</section>
 				<!-- @endsection -->
 
@@ -252,7 +241,8 @@
 				<!-- @section EQUILIBRIO -->
 				<section class="search.balance">
 					<h3>Devolver todos los documentos relevantes y nada más</h3>
-					<p class="left"><em>Search API Solr y Drupal lo hacen muy bien "Out of the box", pero pequeñas diferencias en la configuración importan.</em></p>
+					<p class="left">Search API Solr y Drupal lo hacen muy bien "Out of the box".</p>
+					<p class="left">Pequeñas diferencias en la configuración importan.</p>
 				</section>
 				<!-- @endsection -->
 
@@ -277,8 +267,7 @@
 
 				<!-- @section FULL TEXT -->
 				<section class="search.full-text">
-					<h3 style="font-variant-caps: all-small-caps">Campos "FullText"</h3>
-					<p class="small">Análisis léxico, morfológico y relevancia</p><hr>
+					<h4>Campos "FullText"</h4>
 					<div>
 						<p>"¿Hay huevos fritos con papas?"</p>
 						🡓
@@ -298,42 +287,47 @@
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="chapter-start search-api-solr-config">
 					<h2>Configuración de Search API Solr</h2>
-					<img src="assets/install/config-index-init.png">
 				</section>
 				<!-- @endsection -->
 
 
 				<!-- @section Herramientas Diagrama -->
 				<section class="search-api-solr-config.install">
-					<h3>Instalación</h3>
-					<p class="xsmall left">Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a>, el módulo <em>search</em> (/admin/modules) del core desinstalado, módulo Search API Solr instalado (usa <a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a> para instalarlo porque necesitamos Solarium) y los archivos de configuración añadidos al servidor Solr (/search_api_solr/solr-conf/
-						)</p>
+					<h3>Primero instalación</h3>
+					<div class="left">
 					<ol>
-						<li>Servidor / Backend / Connector</li>
-						<li>Índice / Servidor / Datasources</li>
-						<li>Campos a indexar</li>
-						<li>Procesadores</li>
-						<li>Vista para buscar contenido y mostrar resultado</li>
+						<li>Debes tener instalado un servidor <a href="http://lucene.apache.org/solr/">Solr</a></li>
+						<li>Módulo Search del core, desinstalado</li>
+						<li>Módulo Search API Solr instalado</li>
 					</ol>
+					</div>
+					<p>Usa <a href="https://www.drupal.org/documentation/install/composer-dependencies">composer</a>. Recuerda que Solarium es una dependencia ahora.</p>
 				</section>
 				<!-- @endsection -->
 
+				<section class="search-api-solr-config.install">
+					<h3>Panel de configuración</h3>
+					<ol>
+						<li>Servidor -> Backend -> Connector</li>
+						<li>Índice -> Datasources -> Servidor</li>
+						<li>Índice -> Campos</li>
+						<li>Índice -> Procesadores</li>
+						<li>Vista -> Búsqueda y Resultados</li>
+					</ol>
+				</section>
 
 				<section class="search-api-solr-config.step-01">
-					<p class="xxsmall">Paso 1</p>
-					<h4>Server / Backend</h4>
+					<h4>Servidor -> Backend</h4>
 					<img src="assets/install/add-server-custom.png">
 				</section>
 
 				<section class="search-api-solr-config.step-02">
-					<p class="xxsmall">Paso 2</p>
-					<h4>Connector</h4>
+					<h4>Backend -> Connector</h4>
 					<img src="assets/install/add-server-connector.png">
 				</section>
 
 				<section class="search-api-solr-config.step-03">
-					<p class="xxsmall">Paso 3</p>
-					<h4>Drupal apunta a Solr</h4>
+					<h4>Drupal -> Solr</h4>
 					<table>
 						<tr>
 							<td class="xsmall featured" style="vertical-align: top;">:8983/solr/#/~cores/tapas_bar<br><img src="assets/install/solr-core-admin.png" width="100%"></td>
@@ -343,11 +337,10 @@
 				</section>
 
 				<section class="search-api-solr-config.step-04">
-					<p class="xxsmall">Paso 4</p>
 					<h4>Comprobamos archivos</h4>
 					<table>
 						<tr>
-							<td class="xsmall featured" style="vertical-align: top;">:8983/solr/#/tapas_bar/files<br><img src="assets/install/solr-files-admin.png" width="100%"></td>
+							<td class="xsmall featured" style="vertical-align: top;">:8983/solr/#/tapas_bar/files<br><img src="assets/install/solr-files-admin-02.png" width="100%"></td>
 							<td class="xsmall featured" style="vertical-align: top;">admin/config/search/search-api/server/experimental_solr_server/files<br><img src="assets/install/add-server-check.png"></td>
 						</tr>
 					</table>
@@ -356,88 +349,72 @@
 
 
 				<section class="search-api-solr-config.step-05">
-					<p class="xxsmall">Paso 5</p>
-					<h4>Crear índice</h4>
+					<h4>Índice -> Datasources</h4>
 					<img src="assets/install/add-index.png">
 				</section>
 
 				<section class="search-api-solr-config.step-06">
-					<p class="xxsmall">Paso 6</p>
-					<h4>Configurar data source</h4>
+					<h4>Índice -> Server</h4>
 					<img src="assets/install/configure-datasource-server.png">
 				</section>
 
 
 				<section class="search-api-solr-config.step-07">
-					<p class="xxsmall">Paso 7</p>
 					<h4>Opciones del índice</h4>
-					<p class="xsmall left">Debemos tener en cuenta las implicaciones que tiene Indexar los "items" inmediatamente. Por un lado implica mayor seguridad ya que los resultados de las búsquedas no muestran elementos desactualizados, por otro puede ser una sobrecarga cuando hacemos operaciones con muchos elementos.</p>
-					<img src="assets/install/install-index-options.png">
+					<p >Valora la seguridad antes de elegir la opción</p><img src="assets/install/install-index-options.png">
 				</section>
 
 
 				<section class="search-api-solr-config.step-08">
-					<p class="xxsmall">Paso 8</p>
-					<h4>Añadir campos al índice</h4>
+					<h4>Índice -> Campos</h4>
 					<img src="assets/install/add-fields-empty.png">
 				</section>
 
 				<section class="search-api-solr-config.step-09">
-					<p class="xxsmall">Paso 9</p>
 					<h4>Muy resumido</h4>
-					<img src="assets/install/nodo-documento.png">
-					<div class="xsmall">
-						<p class="left">Estamos en un punto intermedio, vamos a decir al índice la información que queremos indexar.</p>
-						<p class="left">Esta información viene definida por "propiedades" (property path) y agrupada por los Datasources seleccionados (más procesadores).</p>
-						<p class="left">Podemos añadir al índice uno o más campos por cada propiedad.</p>
-					</div>
+					<p>Aqui estamos</p>
+					<img src="assets/install/nodo-documento.png" width="100%">
+					<p>Tierras de items, data sources, campos, processors...</p>
 				</section>
 
 				<section class="search-api-solr-config.step-10">
-					<p class="xxsmall">Paso 10</p>
 					<h4>Campos añadidos</h4>
-					<p class="xxsmall left">Seleccionamos tipo Fulltext si queremos poder buscar entre sus palabras y un boost si queremos darle más relevancia.<br><em>@NOTE:</em> Campo títle indexado dos veces (misma propiedad, dos campos a indexar).</p>
+					<p>Podemos añadir dos campos desde una misma propiedad</p>
 					<img src="assets/install/index-fields-added.png" width="80%">
 				</section>
 
 				<section class="search-api-solr-config.step-11">
-					<p class="xxsmall">Paso 11</p>
 					<h4>Comprobar - Módulo Devel</h4>
-					<p class="xsmall left">Antes de nada, puedes activar el módulo <a href="https://www.drupal.org/project/devel">Devel</a> y comprobar (en un nodo) cómo se van a mapear los campos que has añadido. Solr usa <em>"{PREFIX}s_*"</em> y <em>"{PREFIX}m_*"</em> en su nomenclatura (por ahora no te preocupes, indica tipo y cardinanlidad del campo).</p>
+					<p>Activa el módulo <a href="https://www.drupal.org/project/devel">Devel</a> y comprueba como se mapean los campos.</p>
 					<img src="assets/install/devel-node-solr.png" width="60%">
 				</section>
 
 
 				<section id="search-api-solr-config.step-12" class="search-api-solr-config.step-12">
-					<p class="xxsmall">Paso 12</p>
-					<h4>Configurar Procesadores</h4>
-					<p class="xsmall left">Es una de las herramientas más potentes, por ahora vamos a activar los menos posibles. Algunos pueden interferir con "procesadores" de Solr.<br>Por lo general los procesadores añaden "propiedades" o alteran valores de campos (en distintas etapas del proceso).</p>
+					<h4>Índice -> Procesadores</h4>
+					<p class="xsmall left">Por lo general los procesadores añaden "propiedades" o alteran valores de campos en distintas etapas del proceso.</p>
 					<img src="assets/install/index-processors.png" width="60%">
 				</section>
 
 				<section class="search-api-solr-config.step-13">
-					<p class="xxsmall">Paso 13</p>
 					<h4>Indexamos</h4>
 					<p class="xsmall left">Search API Solr incluye el módulo <em>search_api_solr_defaults</em>, donde parte de la configuración la tienes hecha, incluyendo una vista por defecto.</p>
 					<img src="assets/install/indexing-admin.png" width="100%">
 				</section>
 
 				<section class="search-api-solr-config.step-14">
-					<p class="xxsmall">Paso 14</p>
 					<h4>Añadimos vista</h4>
 					<img src="assets/install/add-view.png" width="100%">
 				</section>
 
 
 				<section class="search-api-solr-config.step-15">
-					<p class="xxsmall">Paso 15</p>
 					<h4>Configuramos vista</h4>
 					<p class="xxsmall left">No cacheamos. Añadimos filtro expuesto de "Full text search" y lo configuramos para que no admita menos de dos caracteres y seleccionamos los campos sobre los que queremos buscar. Ordenamos por relevancia DESC (podemos añadir después fecha DESC por ejemplo), configuramos permisos de acceso, filtramos por tipo de contenido y por estado del contenido (publicado o no). Añadimos resumen de resultados en la cabecera y texto cuando no hay resultados.</p>
 					<img src="assets/install/views-admin-configuration.png" width="100%">
 				</section>
 
 				<section class="search-api-solr-config.step-16">
-					<p class="xxsmall">Paso 16</p>
 					<h4>Comprobamos</h4>
 					<p class="small">Yeahhh!!!!</p>
 					<img src="assets/install/view-platos-results-simple.png" width="100%">
@@ -446,9 +423,9 @@
 
 				<section class="search-api-solr-config.step-17">
 					<h4>Demo</h4>
+					<p class="small">Hay técnicas para solventar este resultado</p>
 					<p class="small">#fail</p>
-					<p class="xxsmall left">Con los procesadores (<a href="#/search-api-solr-config.step-12">Paso 12</a>) por defecto de Search API podemos solucionar este problema, pero vamos a configurar Solr para que lo haga él.<br>Queremos eliminar los signos de interrogación y las palabras comunes como "Hay" o "con". Además queremos añadir "papas" como sinónimo de patatas.</p>
-					<img src="assets/install/demo-fail.png" width="90%">
+					<img src="assets/install/demo-fail.png" width="70%">
 				</section>
 
 				<!-- @section SEARCH API SOLR CONFIG-->
@@ -503,11 +480,9 @@
 				</section>
 
 				<section class="solr-config.step-01">
-					<p class="xxsmall">Paso 1</p>
 					<h4>Nuevo tipo de campo en solr</h4>
-					<p class="xsmall">schema_extra_types.xml</p>
-					<p class="xxsmall left">Los textos resaltados con extentisón ".txt" son los que puedes "Tunear", sólo tienes que decirle a tu campo dónde están.</p>
-					<p class="xxsmall left">Cada filter y tokenizer que ves, es parecido a los procesadores de Search API, por eso no debemos activar muchos procesadores en Drupal, Solr ya procesa el texto de la forma que queramos nosotros.</p>
+					<p class="small">schema_extra_types.xml</p>
+					<p class="xsmall left">Cada filter y tokenizer que ves, es parecido a los procesadores de Search API, por eso no debemos activar muchos procesadores en Drupal, Solr ya procesa el texto de la forma que queramos nosotros.</p>
 					<pre><code class="xxsmall" data-trim data-noescape>
 &lt;fieldType name=&quot;text_tapas_bar&quot; class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot;&gt;
     &lt;analyzer type=&quot;index&quot;&gt;
@@ -537,9 +512,8 @@
 				</section>
 
 				<section class="solr-config.step-02">
-					<p class="xxsmall">Paso 2</p>
 					<h4>Crear campos dinámicos asociados a ese tipo</h4>
-					<p class="xsmall">schema_extra_fields.xml</p>
+					<p class="small">schema_extra_fields.xml</p>
 					<pre><code class="xxsmall" data-trim data-noescape>
 &lt;dynamicField name=&quot;tbars_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;false&quot; termVectors=&quot;true&quot;/&gt;
 &lt;dynamicField name=&quot;tbarm_*&quot; type=&quot;text_tapas_bar&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;true&quot; termVectors=&quot;true&quot;/&gt;
@@ -548,7 +522,6 @@
 				</section>
 
 				<section class="solr-config.step-03">
-					<p class="xxsmall">Paso 3</p>
 					<h4>Recargamos el core y comprobamos si aparece nuestro campo</h4>
 					<p class="xxsmall featured">:8983/solr/#/tapas_bar/schema</p>
 					<img src="assets/install/solr-admin-schema.png" width="70%">
@@ -556,7 +529,6 @@
 
 
 				<section class="solr-config.step-04">
-					<p class="xxsmall">Paso 4</p>
 					<h4>Pequeño análisis de nuestro campo</h4>
           <p class="xxsmall featured">:8983/solr/#/tapas_bar/analysis</p>
 					<p class="xsmall">Puedes comprobar directamente en Solr cómo se va a indexar y a buscar tu campo.<br>¡Es muy útil!</p>
@@ -612,7 +584,7 @@ return parent::supportsDataType($type) | $type == 'text_tapas_bar';
 				<!-- @endsection -->
 
 				<section class="solr-config.datatype">
-					<h4>Damos de alta el "data type" en Drupal</h4>
+					<h4>Extendemos el DataTypePluginBase</h4>
 					<pre><code class="xxsmall" data-trim data-noescape>
 namespace Drupal\tapas_bar_solr\Plugin\search_api\data_type;
 use Drupal\search_api\DataType\DataTypePluginBase;
