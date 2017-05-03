@@ -100,109 +100,6 @@
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section PEOPLE -->
-				<section class="history.battleplan">
-					<h3>Algunos colaboradores ;)</h3>
-					<p class="small">
-						Markus Kalkbrenner
-						Thomas Seidl
-						mkalkbrenner
-						Andrei Mateescu
-						Sascha Grossenbacher
-						nickveenhof
-						Mattias Michaux
-						drunkenmonkey
-						git
-						Florian Weber
-						Nick Veenhof
-						berdir
-						Christian Spitzlay
-						borisson_
-						blazey
-						chabby
-						ekes
-						janusman
-						jsacksick
-						Ismaeil Abouljamal
-						Tobias Stoeckler
-						<span style="background-color: yellow"><b>TuWebO</b></span>
-						darthsteven
-						daspeter
-						drunken-monkey
-						fago
-						larowlan
-						mollux
-						snufkin
-						Abouljamal
-						Aurelien Navarre
-						Hydra
-						Monique Szpak
-						NiteshP
-						Steven Jones
-						The Great Git Migration
-						andrewbelcher
-						andypost
-						ayalon
-						bdecarne
-						cferthorney
-						corvus_ch
-						cspitzlay
-						daeron
-						danquah
-						dasjo
-						deciphered
-						derhasi
-						dwikoff
-						febbraro
-						feyp
-						guillaumev
-						heykarthikwithu
-						ianmthomasuk
-						izus
-						jhedstrom
-						jiff
-						jlapp
-						jonhattan
-						jsteggink
-						jwilson3
-						kenorb
-						klausi
-						kotnik
-						marthinal
-						mbovan
-						nickvh
-						oknate
-						pfrenssen
-						populist
-						prics
-						sardara
-						sch4lly
-						swentel
-						thegreat
-						umed_singh
-					</p>
-				</section>
-				<!-- @endsection -->
-
-				<!-- @section GOAL -->
-				<section class="history.goal">
-					<h3>Nuestra meta</h3>
-					<table>
-						<tr>
-							<td style="vertical-align: top"><img src="assets/history/icon-w-drupal8-search-api.png" width="80%"></td>
-							<td style="vertical-align: middle">
-								<ul>
-									<li>Search API como módulo principal</li>
-									<li>Search API Solr</li>
-									<li>Integrar los demás módulos mejorando funcionlidad</li>
-								</ul>
-							</td>
-						</tr>
-					</table>
-
-				</section>
-				<!-- @endsection -->
-
 				<!-- @section TIMELINE -->
 				<section class="history.timeline">
 					<h3>Time line</h3>
@@ -243,12 +140,12 @@
 					<ul>
 						<li>Índices más flexibles en su configuración</li>
 						<li>Interfaz para añadir campos a los items</li>
-						<li>Multidioma integrado en Search API</li>
+						<li>"Multidioma" integrado en Search API</li>
 						<li>Mayor facilidad para integrar módulos como el <a href="https://www.drupal.org/project/search_api_solr_multilingual">Search API Solr Multilingual</a></li>
 						<li>Processors más poderosos</li>
 						<li>Muchas estructuras han sido converitdas en Clases</li>
-						<li>Muchas funciones helper pasan a ser service classes</li>
-						<li>Integración con Tests</li>
+            <li>Solarium</li>
+						<li>Tests</li>
 					</ul>
 				</section>
 				<!-- @endsection -->
@@ -417,7 +314,7 @@
 					<ol>
 						<li>Servidor / Backend / Connector</li>
 						<li>Índice / Servidor / Datasources</li>
-						<li>Campos del "Item" a indexar</li>
+						<li>Campos a indexar</li>
 						<li>Procesadores</li>
 						<li>Vista para buscar contenido y mostrar resultado</li>
 					</ol>
@@ -476,8 +373,8 @@
 
 				<section class="search-api-solr-config.step-07">
 					<p class="xxsmall">Paso 7</p>
-					<h4>Guardar y añadir campos</h4>
-					<p class="xsmall left">Debemos tener en cuenta las implicaciones que tiene Indexar los "items" inmediatamente. Por un lado implica mayor seguridad ya que los resultados de las búsquedas no muestran elementos desactualizados, por otro puede ser una sobrecarga cuando hacemos operaciones de muchos elementos.</p>
+					<h4>Opciones del índice</h4>
+					<p class="xsmall left">Debemos tener en cuenta las implicaciones que tiene Indexar los "items" inmediatamente. Por un lado implica mayor seguridad ya que los resultados de las búsquedas no muestran elementos desactualizados, por otro puede ser una sobrecarga cuando hacemos operaciones con muchos elementos.</p>
 					<img src="assets/install/install-index-options.png">
 				</section>
 
@@ -494,7 +391,7 @@
 					<img src="assets/install/nodo-documento.png">
 					<div class="xsmall">
 						<p class="left">Estamos en un punto intermedio, vamos a decir al índice la información que queremos indexar.</p>
-						<p class="left">Esta información viene definida por "propiedades" (property path) y agrupada por los Datasources seleccionados.</p>
+						<p class="left">Esta información viene definida por "propiedades" (property path) y agrupada por los Datasources seleccionados (más procesadores).</p>
 						<p class="left">Podemos añadir al índice uno o más campos por cada propiedad.</p>
 					</div>
 				</section>
