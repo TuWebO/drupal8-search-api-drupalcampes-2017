@@ -225,13 +225,6 @@
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section PAGINA NO ELEMENTOS -->
-				<section class="page-search.tapas-bar-example">
-					<h3>¿Qué almacenamos y cómo para ofrecer buenos resutlados?</h3>
-					<img src="assets/busqueda/search-platos-example.png">
-				</section>
-				<!-- @endsection -->
-
 				<!-- @section LA BUSQUEDA -->
 				<section class="metadrop chapter-start search">
 					<h2>La búsqueda</h2>
@@ -243,6 +236,13 @@
 					<h3>Devolver todos los documentos relevantes y nada más</h3>
 					<p class="left">Search API Solr y Drupal lo hacen muy bien "Out of the box".</p>
 					<p class="left">Pequeñas diferencias en la configuración importan.</p>
+				</section>
+				<!-- @endsection -->
+
+				<!-- @section PAGINA NO ELEMENTOS -->
+				<section class="page-search.tapas-bar-example">
+					<h3>¿Qué almacenamos y cómo para ofrecer buenos resutlados?</h3>
+					<img src="assets/busqueda/search-platos-example.png">
 				</section>
 				<!-- @endsection -->
 
@@ -268,10 +268,10 @@
 				<!-- @section FULL TEXT -->
 				<section class="search.full-text">
 					<h4>Campos "FullText"</h4>
+					<img src="assets/busqueda/field-type-text-full-index.png">
+					<img src="assets/busqueda/field-type-text-full-query.png">
 					<div>
 						<p>"¿Hay huevos fritos con papas?"</p>
-						🡓
-						<p>"huevos fritos papas patatas"</p>
 						🡓
 						<table>
 							<tr>
@@ -309,12 +309,17 @@
 					<h3>Panel de configuración</h3>
 					<ol>
 						<li>Servidor -> Backend -> Connector</li>
-						<li>Índice -> Datasources -> Servidor</li>
+						<li>Índice -> Datasources + Servidor</li>
 						<li>Índice -> Campos</li>
 						<li>Índice -> Procesadores</li>
 						<li>Vista -> Búsqueda y Resultados</li>
 					</ol>
 				</section>
+
+        <section class="search-api-solr-config.install-dashboard">
+          <h4>Creación de servidor e índice</h4>
+          <img src="assets/install/drupal-search-config-dashboard.png">
+        </section>
 
 				<section class="search-api-solr-config.step-01">
 					<h4>Servidor -> Backend</h4>
@@ -350,6 +355,7 @@
 
 				<section class="search-api-solr-config.step-05">
 					<h4>Índice -> Datasources</h4>
+          <p class="small">Podemos añadir varios Datasources</p>
 					<img src="assets/install/add-index.png">
 				</section>
 
@@ -379,7 +385,7 @@
 
 				<section class="search-api-solr-config.step-10">
 					<h4>Campos añadidos</h4>
-					<p>Podemos añadir dos campos desde una misma propiedad</p>
+					<p>Podemos añadir dos campos para una misma propiedad</p>
 					<img src="assets/install/index-fields-added.png" width="80%">
 				</section>
 
@@ -423,7 +429,6 @@
 
 				<section class="search-api-solr-config.step-17">
 					<h4>Demo</h4>
-					<p class="small">Hay técnicas para solventar este resultado</p>
 					<p class="small">#fail</p>
 					<img src="assets/install/demo-fail.png" width="70%">
 				</section>
