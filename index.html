@@ -228,14 +228,16 @@
 				<!-- @section LA BUSQUEDA -->
 				<section class="metadrop chapter-start search">
 					<h2>La búsqueda</h2>
+					<p class="small"><em>El contexto es importante</em></p>
+					<p class="small">"papas" en una web de restaurantes puede ser sinónimo de "patatas".</p>
 				</section>
 				<!-- @endsection -->
 
 				<!-- @section EQUILIBRIO -->
 				<section class="search.balance">
 					<h3>Devolver todos los documentos relevantes y nada más</h3>
-					<p class="left">Search API Solr y Drupal lo hacen muy bien "Out of the box".</p>
-					<p class="left">Pequeñas diferencias en la configuración importan.</p>
+					<p class="left">Search API Solr lo hace muy bien "Out of the box".</p>
+					<p class="left">Pequeñas diferencias en su configuración importan.</p>
 				</section>
 				<!-- @endsection -->
 
@@ -267,9 +269,8 @@
 
 				<!-- @section FULL TEXT -->
 				<section class="search.full-text">
-					<h4>Campos "FullText"</h4>
-					<img src="assets/busqueda/field-type-text-full-index.png">
-					<img src="assets/busqueda/field-type-text-full-query.png">
+					<h4>Solr indexa así</h4>
+					<p class="xsmall"><em>Los campos "FullText"</em></p>
 					<div>
 						<p>"¿Hay huevos fritos con papas?"</p>
 						🡓
@@ -280,16 +281,30 @@
 							</tr>
 						</table>
 					</div>
+					<img src="assets/busqueda/huev-frit-pat.png">
 				</section>
 				<!-- @endsection -->
+
 
 
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="chapter-start search-api-solr-config">
 					<h2>Configuración de Search API Solr</h2>
+					<em>En Drupal</em>
 				</section>
 				<!-- @endsection -->
 
+
+				<section class="search-api-solr-config.step-09">
+					<h4>Muy resumido</h4>
+					<img src="assets/install/nodo-documento.png" width="70%">
+					<p>Tierras de items, data sources, campos, processors...</p>
+				</section>
+
+				<section class="search-api-solr-config.step-09-bis">
+					<h4>En detalle</h4>
+					<img src="assets/install/index-what-how.png" width="100%">
+				</section>
 
 				<!-- @section Herramientas Diagrama -->
 				<section class="search-api-solr-config.install">
@@ -306,14 +321,14 @@
 				<!-- @endsection -->
 
 				<section class="search-api-solr-config.install">
-					<h3>Panel de configuración</h3>
+					<h3>Configuración</h3>
 					<ol>
-						<li>Servidor -> Backend -> Connector</li>
-						<li>Índice -> Datasources + Servidor</li>
-						<li>Índice -> Campos</li>
-						<li>Índice -> Procesadores</li>
-						<li>Vista -> Búsqueda y Resultados</li>
+						<li>Crear el servidor y el índice</li>
+						<li>Añadir campos al índice</li>
+						<li>Crear vista para buscar y mostrar resultados</li>
 					</ol>
+					<p class="small">El índice decide qué información (campos) se va a guardar y cómo (tipo de dato)</p>
+					<p class="small">El "servidor" es el que hace la tarea de almacenar la información y buscarla</p>
 				</section>
 
         <section class="search-api-solr-config.install-dashboard">
@@ -374,13 +389,6 @@
 				<section class="search-api-solr-config.step-08">
 					<h4>Índice -> Campos</h4>
 					<img src="assets/install/add-fields-empty.png">
-				</section>
-
-				<section class="search-api-solr-config.step-09">
-					<h4>Muy resumido</h4>
-					<p>Aqui estamos</p>
-					<img src="assets/install/nodo-documento.png" width="100%">
-					<p>Tierras de items, data sources, campos, processors...</p>
 				</section>
 
 				<section class="search-api-solr-config.step-10">
@@ -600,7 +608,7 @@ use Drupal\search_api\DataType\DataTypePluginBase;
  *   label = @Translation(&quot;FullText Tapas Bar&quot;),
  *   description = @Translation(&quot;A text field which takes in account Spanish tapas bar language&quot;),
  *   fallback_type = &quot;text&quot;,
- *   prefix = &quot;tbar&quot;,
+ *   prefix = <mark>&quot;tbar&quot;</mark>,
  * )
  */
 class TapasBarDataType extends DataTypePluginBase {
