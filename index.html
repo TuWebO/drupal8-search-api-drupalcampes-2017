@@ -228,15 +228,15 @@
 				<!-- @section LA BUSQUEDA -->
 				<section class="metadrop chapter-start search">
 					<h2>La búsqueda</h2>
-					<p class="small"><em>El contexto es importante</em></p>
-					<p class="small">"papas" en una web de restaurantes puede ser sinónimo de "patatas".</p>
+					<p><em>El contexto es importante</em></p>
+					<p>"papas" en una web de restaurantes puede ser sinónimo de "patatas".</p>
 				</section>
 				<!-- @endsection -->
 
 				<!-- @section EQUILIBRIO -->
 				<section class="search.balance">
 					<h3>Devolver todos los documentos relevantes y nada más</h3>
-					<p class="left">Search API Solr lo hace muy bien "Out of the box".</p>
+					<p class="left"><span class="featured">Search API</span> + <span class="featured">Search API Solr</span> + <span class="featured">Solr</span> lo hacen muy bien "Out of the box".</p>
 					<p class="left">Pequeñas diferencias en su configuración importan.</p>
 				</section>
 				<!-- @endsection -->
@@ -270,7 +270,7 @@
 				<!-- @section FULL TEXT -->
 				<section class="search.full-text">
 					<h4>Solr indexa así</h4>
-					<p class="xsmall"><em>Los campos "FullText"</em></p>
+					<p class="xsmall"><em>Lo que tú haces con las letras él lo hace con las palabras (más o menos)</em></p>
 					<div>
 						<p>"¿Hay huevos fritos con papas?"</p>
 						🡓
@@ -444,7 +444,17 @@
 				<!-- @section SEARCH API SOLR CONFIG-->
 				<section class="chapter-start solr-config">
 					<h2>Configuración de Solr</h2>
-					<p class="xsmall">Todo el código es experimental, sólo con el propósito de dar un ejemplo. Sólo se está usando para estas diapositivas.</p>
+					<p>Archivos de configuración de <span class="featured">Solr</span></p>
+					<p class="xxsmall">Todo el código es experimental, sólo con el propósito de dar un ejemplo. Sólo se está usando para estas diapositivas.</p>
+				</section>
+				<!-- @endsection -->
+
+
+				<!-- @section SEARCH API SOLR CONFIG-->
+				<section class="chapter-start summary">
+					<h2>Muy resumido</h2>
+					<p>Queremos crear un campo en <span class="featured">Solr</span> con "super poderes" que procese el texto que guarda y que también lo procese cuando lo busca</p>
+					<p class="small">Añadir sinónimos, eliminar tildes y palabras comunes...</p>
 				</section>
 				<!-- @endsection -->
 
@@ -756,8 +766,10 @@ class AddTapasDiscount extends ProcessorPluginBase {
           <p>¡A todos los voluntarios!</p>
           <p>¡A la Organización!</p>
           <p>¡A la Asociación Española de Drupal!</p>
+					<p>¡A los patrocinadores!</p>
           <p>¡A todos vosotros!</p>
-					<p class="xsmall featured"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p>
+					<p>@TuWebO</p>
+					<!-- <p class="xsmall featured"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p> -->
 				</section>
 
 
