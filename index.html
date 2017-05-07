@@ -270,7 +270,7 @@
 				<!-- @section FULL TEXT -->
 				<section class="search.full-text">
 					<h4>Solr indexa así</h4>
-					<p class="xsmall"><em>Lo que tú haces con las letras él lo hace con las palabras (más o menos)</em></p>
+					<p class="xsmall"><em>Lo que tú haces con las letras él lo hace con las palabras (más o menos)</em>. Tiene campos con "super poderes".</p>
 					<div>
 						<p>"¿Hay huevos fritos con papas?"</p>
 						🡓
@@ -573,7 +573,7 @@
 					<h3>Implementación en Drupal</h3>
 					<p class="xsmall">La hacemos a través de plugins</p>
 					<div class="left">
-					<p>Crear backend plugin de Solr que reconozca nuestro tipo.</p>
+					<p>Crear backend plugin de Search API Solr que reconozca nuestro tipo.</p>
 					<p>Crear un plugin data_type para que Drupal pueda operar con él.</p>
 					<p>Extra: Ejemplo de processor plugin que crea un campo (propiedad) para indexar.</p>
 					</div>
@@ -704,29 +704,13 @@ class AddTapasDiscount extends ProcessorPluginBase {
 				</section>
 				<!-- @endsection -->
 
-				<!-- @section Cheat sheet Drupal -->
-				<section class="docs.cheatsheet.drupal" data-breadcrumb="Docs > Cheat sheet > Drupal">
-					<h4>Drupal - Referencias</h4>
-					<dl class="xxsmall">
-						<dt>Converting a SearchAPI query into a Solr query</dt>
-						<dd>SearchApiSolrBackend::search(QueryInterface $query)</dd>
-						<dt>alterSearchApiQuery</dt>
-						<dd>Allow custom changes before converting a SearchAPI query into a Solr query</dd>
-						<dd>hook_search_api_query_alter</dd>
-						<dt>preQuery</dt>
-						<dd>Allow custom changes before sending a search query to Solr.</dd>
-						<dd>hook_search_api_solr_query_alter</dd>
-						<dt>alterSolrDocuments</dt>
-						<dd>Alter Solr documents before they are sent to Solr for indexing.</dd>
-						<dd>hook_search_api_solr_documents_alter</dd>
-					</dl>
-				</section>
-				<!-- @endsection -->
 
 				<!-- @section Cheat sheet Solr -->
 				<section class="docs.cheatsheet.solr" data-breadcrumb="Docs > Cheat sheet > Solr">
-					<h4>Solr - Referencias</h4>
+					<h4>Referencias</h4>
 					<dl class="xxsmall">
+						<dt>Trabajando con Drupal, Search API y Solr (algo desactualizado pero con mucha información válida)</dt>
+						<dd><a href="http://metadrop.net/node/29">http://metadrop.net/articulo/trabajando-drupal-search-api-solr</a></dd>
 						<dt>Apache Solr Reference Guide</dt>
 						<dd><a href="https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide">https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide</a></dd>
 						<dt>Solr resources</dt>
@@ -763,12 +747,12 @@ class AddTapasDiscount extends ProcessorPluginBase {
 
 				<section>
 					<h2>¡Muchas gracias!</h2>
+					<p class="xsmall"><a href="https://www.drupal.org/u/tuwebo">drupal.org/u/tuwebo</a> </p>
           <p>¡A todos los voluntarios!</p>
           <p>¡A la Organización!</p>
           <p>¡A la Asociación Española de Drupal!</p>
 					<p>¡A los patrocinadores!</p>
           <p>¡A todos vosotros!</p>
-					<p>@TuWebO</p>
 					<!-- <p class="xsmall featured"><em><a href="https://dev.acquia.com/blog/drupal-8-module-of-the-week/drupal-8-module-of-the-week-search-api/29/03/2016/10201">InMemoriamOfPinkPony.rip</a></em></p> -->
 				</section>
 
